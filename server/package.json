@@ -1,0 +1,25 @@
+{
+  "name": "boston-scientific-edge1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exodevhub/boston-scientific-edge1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/exodevhub/boston-scientific-edge1/issues"
+  },
+  "homepage": "https://github.com/exodevhub/boston-scientific-edge1#readme",
+  "dependencies": {
+    "cloudmersive-image-api-client": "^1.1.4",
+    "cloudmersive-ocr-api-client": "^1.1.4",
+    "fs": "0.0.1-security",
+    "ocr-space-api": "^1.0.1"
+  }
+}
