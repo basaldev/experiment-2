@@ -18,13 +18,16 @@ type OnRoute = (ctx: Context) => void;
 const logger = getLogger('Middleware/router');
 
 function homeRouter(onRoute: OnRoute) {
-  page('', onRoute);
+  page('/', onRoute);
 }
-function documentsRouter(onRoute: OnRoute) {
-  page('/docs', onRoute);
+function secondRouter(onRoute: OnRoute) {
+  page('/2', onRoute);
 }
-function historyRouter(onRoute: OnRoute) {
-  page('/history', onRoute);
+function thirdRouter(onRoute: OnRoute) {
+  page('/3', onRoute);
+}
+function fourthRouter(onRoute: OnRoute) {
+  page('/4', onRoute);
 }
 
 export default function startRouters() {
@@ -34,13 +37,17 @@ export default function startRouters() {
     updateCurrentPage({ name: 'HOME_PAGE' });
   });
 
-  documentsRouter(ctx => {
+  secondRouter(ctx => {
     logger.debug('Document route');
-    updateCurrentPage({ name: 'DOCUMENTS_PAGE' });
+    updateCurrentPage({ name: 'SECOND_PAGE' });
   });
-  historyRouter(ctx => {
+  thirdRouter(ctx => {
     logger.debug('Document route');
-    updateCurrentPage({ name: 'HISTORY_PAGE' });
+    updateCurrentPage({ name: 'THIRD_PAGE' });
+  });
+  fourthRouter(ctx => {
+    logger.debug('Document route');
+    updateCurrentPage({ name: 'FOURTH_PAGE' });
   });
 
   page();

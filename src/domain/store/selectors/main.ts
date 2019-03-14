@@ -22,3 +22,10 @@ export function getSessionAttributes(): any {
 export function getDocuments(): Array<any> {
   return state().documents;
 }
+export function getDianosis(): Array<any> {
+  return state().dianosis;
+}
+
+export function getDoctors(): Array<any> {
+  return state().doctors;
+}

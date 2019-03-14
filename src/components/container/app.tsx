@@ -1,9 +1,12 @@
 import React from 'react';
-import { currentPage, getMessages, getDocuments, getSessionAttributes, getInputText } from 'domain/store/selectors/main';
+import { currentPage, getMessages, getDocuments, getSessionAttributes, getDianosis ,getInputText, getDoctors } from 'domain/store/selectors/main';
 import { Grid } from '@material-ui/core';
 import { Navbar } from 'components/presentational/navbar';
 import { ChatView } from 'components/container/chat-view';
 import { DocumentsView } from 'components/container/documents-view';
+import { DianoseView } from 'components/container/dianose-view';
+import { ActionsView } from 'components/container/actions-view';
+
 import { navigate } from 'domain/middleware/router';
 import { css } from 'emotion';
 
@@ -20,27 +23,32 @@ export function App() {
           lexruntime={lexruntime}
           sessionAttributes={getSessionAttributes()}
           />;
-      case 'DOCUMENTS_PAGE':
+      case 'SECOND_PAGE':
         return <DocumentsView documents={getDocuments()} />;
+      case 'THIRD_PAGE':
+        return <DianoseView dianosis={getDianosis()} doctors={getDoctors()} />;
+      case 'FOURTH_PAGE':
+        return <ActionsView dianosis={getDianosis()} doctors={getDoctors()} />;
       default:
         return <p>Page not found</p>;
     }
   })(currentPage().name);
 
   return (
-    <Grid container direction="column">
+    <Grid container>
       <Grid item xs={12} className={css`
       min-height: 90vh;
     `}>
         {content}
       </Grid>
-      <div>
+      <Grid item xs={12}>
         <Navbar routes={[
-          (e) => { navigate('', e)},
-          (e) => { navigate('/history', e)},
-          (e) => { navigate('/docs', e)},
+          (e) => { navigate('/', e)},
+          (e) => { navigate('/2', e)},
+          (e) => { navigate('/3', e)},
+          (e) => { navigate('/4', e)},
         ]} />
-      </div>
+      </Grid>
     </Grid>
   );
 }

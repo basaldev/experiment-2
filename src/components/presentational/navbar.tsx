@@ -14,13 +14,12 @@ export function Navbar(props: any){
   return (
     <BottomNavigation
         value={props.value}
-        onChange={() => {}}
         showLabels
       >
         <BottomNavigationAction onClick={props.routes[0]} label="Chat" icon={<ChatIcon />} />
         <BottomNavigationAction onClick={props.routes[1]}label="Profile" icon={<Assignment />} />
-        <BottomNavigationAction onClick={props.routes[2]}label="Diano" icon={<AssignmentLate />} />
-        <BottomNavigationAction onClick={props.routes[3]} label="My Doctors" icon={<AssignmentLate />} />
+        <BottomNavigationAction onClick={props.routes[2]}label="Dianose" icon={<AssignmentLate />} />
+        <BottomNavigationAction onClick={props.routes[3]} label="Treament" icon={<AssignmentInd />} />
       </BottomNavigation>
   )
 }

@@ -11,12 +11,11 @@ import { createAtom } from 'js-atom';
 import { Bubble } from 'components/presentational/bubble';
 
 export type HomePage = { name: 'HOME_PAGE' };
+export type SecondPage = { name: 'SECOND_PAGE' };
+export type ThirdPage = { name: 'THIRD_PAGE' };
+export type FourthPage = { name: 'FOURTH_PAGE' };
 
-export type DocumentsPage = { name: 'DOCUMENTS_PAGE' };
-export type HistoryPage = { name: 'HISTORY_PAGE' };
-
-
-export type Page = HomePage | DocumentsPage | HistoryPage;
+export type Page = HomePage | SecondPage | ThirdPage | FourthPage;
 
 export type Item = { name: string; url: string };
 
@@ -26,6 +25,8 @@ export type State = {
   filteredItems: Array<Item>;
   messages: Array<any>;
   documents: Array<any>;
+  dianosis: Array<any>;
+  doctors: Array<any>;
   loading: boolean;
   inputText:string;
   sessionAttributes: any;
@@ -42,7 +43,57 @@ const defaultState: State = {
     speaker: 'BOT'
   }],
   inputText: '',
-  documents: [],
+  documents: [
+    {
+      type: 'data',
+      img: `https://picsum.photos/200/300/?random`,
+      title: 'Image',
+      cols: 3,
+    },
+    {
+      type: 'document',
+      img: `https://picsum.photos/500/200/?random`,
+      title: 'Image',
+      cols: 1,
+    },
+    {
+      type: 'document',
+      img: `https://picsum.photos/430/470/?random`,
+      title: 'Image',
+      cols: 2,
+    },
+    {
+      img: `https://picsum.photos/100/300/?random`,
+      title: 'Image',
+      cols: 3,
+    },
+    {
+      type: 'data',
+      img: `https://picsum.photos/900/200/?random`,
+      title: 'Image',
+      cols: 1,
+    },
+    {
+      img: `https://picsum.photos/450/454/?random`,
+      title: 'Image',
+      cols: 2,
+    },
+    {
+      img: `https://picsum.photos/450/454/?random`,
+      title: 'Image',
+      cols: 2,
+    },
+  ],
+  dianosis: [{
+    img: `https://picsum.photos/450/454/?random`,
+    title: 'Image',
+    cols: 2,
+  }],
+  doctors: [{
+    img: `https://picsum.photos/450/454/?random`,
+    title: 'Image',
+    cols: 2,
+  }],
   loading: true,
   sessionAttributes: {}
 };
