@@ -1,3 +1,4 @@
-var.js
-node_modules
-app/node_modules
+node_modules/
+npm-debug.log
+.idea/
+build/*.js
