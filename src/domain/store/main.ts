@@ -86,9 +86,18 @@ const defaultState: State = {
   ],
   dianosis: [],
   doctors: [{
-    img: `https://picsum.photos/450/454/?random`,
-    title: 'Image',
-    cols: 2,
+    img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
+    name: 'Joseph Lister',
+    specialisationId: 31
+  },
+  {
+    img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
+    name: 'Henry Gray',
+    specialisationId: 95,
+  },
+  {
+    img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
+    name: 'Jonas Salk',
   }],
   loading: true,
   sessionAttributes: {}

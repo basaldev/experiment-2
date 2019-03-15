@@ -36,16 +36,16 @@ function expandedSection(){
 export function DoctorCard(tile:any, expanded: boolean) {
   const expandedContent = expanded ? expandedSection() : '';
   return(
-    <Card key={tile.img + Math.random()} >
+    <Card key={tile.name + Math.random()} >
             <CardMedia className={css`
               min-height: 30vh;
             `}
-              image="https://images.unsplash.com/photo-1550831106-0994fe8abcfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-              title="Contemplative Reptile"
+              image={tile.img}
+              title={tile.name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Doctor James <Chip color="primary" label="Covered by Issurance"  icon={<TickIcon />} />
+               {tile.name} <Chip color="primary" label="Covered by Issurance"  icon={<TickIcon />} />
           </Typography>
           <Typography component="p">
                 During our last vist I prescripted Medicine A and B for your back pain, <strong>daily for 3 weeks</strong>

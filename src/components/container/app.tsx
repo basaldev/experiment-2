@@ -37,7 +37,8 @@ export function App() {
   return (
     <Grid container>
       <Grid item xs={12} className={css`
-      min-height: 90vh;
+      height: 90vh;
+      overflow:scroll;
     `}>
         {content}
       </Grid>
