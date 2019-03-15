@@ -36,3 +36,12 @@ export function updateChat(message:any){
     message
   ]}));
 }
+
+export function updateDiagnosis(newDianosis:any){
+  return store.swap(oldState => ({
+    ...oldState,
+    dianosis: [
+    ...oldState.dianosis,
+    newDianosis
+  ]}));
+}

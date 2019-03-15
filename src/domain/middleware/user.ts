@@ -8,16 +8,25 @@
  */
 
 import { getLogger } from 'domain/logger';
-import { updateChat, updateInputText, updatesessionAttributes } from 'domain/store/reducers/main';
+import { updateChat, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
+import { getDoctors } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/dianoses-card';
 import { Bubble } from 'components/presentational/bubble';
 
 const logger = getLogger('Middleware/user');
 
 function normalizeLexResponse(message:string){
-  const jsMessage = JSON.parse(message);
-  console.log(jsMessage);
-  return message
+  return JSON.parse(message);
+}
+
+export function saveDianoses(issue: object){
+  //find doctor
+  const doctor = getDoctors();
+  const newDiagnosis = {
+    issue,
+    doctor
+  }
+  updateDiagnosis(newDiagnosis);
 }
 
 //create react app

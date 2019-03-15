@@ -84,11 +84,7 @@ const defaultState: State = {
       cols: 2,
     },
   ],
-  dianosis: [{
-    img: `https://picsum.photos/450/454/?random`,
-    title: 'Image',
-    cols: 2,
-  }],
+  dianosis: [],
   doctors: [{
     img: `https://picsum.photos/450/454/?random`,
     title: 'Image',
