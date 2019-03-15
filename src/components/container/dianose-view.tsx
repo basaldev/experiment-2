@@ -17,7 +17,6 @@ function NoData(dianosis: Array<any>){
 }
 
 export function DianoseView(props:any) {
-  debugger
   return (
     <Grid container direction="column" spacing={8} className={css`
       padding: 16px;
@@ -26,7 +25,7 @@ export function DianoseView(props:any) {
     <Grid item >
     {props.dianosis.map(tile => {
       return (<>
-      {DianosesCard([{Issue: tile.issue}])}
+      {DianosesCard([{Issue: tile.issue}], false)}
       {DoctorCard(tile.doctor, false)}
       </>)
     })}
