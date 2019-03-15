@@ -14,11 +14,18 @@ import { Bubble } from 'components/presentational/bubble';
 
 const logger = getLogger('Middleware/user');
 
+function normalizeLexResponse(message:string){
+  const jsMessage = JSON.parse(message);
+  console.log(jsMessage);
+  return message
+}
+
 //create react app
 export function showResponse(lexResponse) {
   if (lexResponse.dialogState === 'Fulfilled') {
+
     updateChat({
-      content: DianosesCard(lexResponse.message),
+      content: DianosesCard(normalizeLexResponse(lexResponse.message)),
       showSpeaker: true,
       direction: 'row',
       speaker: 'BOT'
