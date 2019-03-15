@@ -15,18 +15,19 @@ import { Grid,
 import TickIcon from '@material-ui/icons/Check';
 import { css } from 'emotion';
 import React from 'react';
+import { saveDoctor } from 'domain/middleware/user';
 
 function expandedSection(){
   return (<CardContent>
               <List component="nav" >
-                <ListItem button>
+                <ListItem >
                   <ListItemText primary="Medicine A" />
                 </ListItem>
                 <Divider />
-                <ListItem button divider>
+                <ListItem divider>
                   <ListItemText primary="Medicine B" />
                 </ListItem>
-                <ListItem button>
+                <ListItem>
                   <ListItemText primary="Daily for 3 weeks" />
                 </ListItem>
               </List>
@@ -53,10 +54,10 @@ export function DoctorCard(tile:any, expanded: boolean) {
             </CardContent>
             {expandedContent}
           <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={() => { saveDoctor(tile)}}>
               Book an Appointment
         </Button>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={() => {window.open('tel:900300400')}}>
               Call
         </Button>
           </CardActions>

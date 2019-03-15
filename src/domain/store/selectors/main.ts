@@ -29,3 +29,6 @@ export function getDianosis(): Array<any> {
 export function getDoctors(): Array<any> {
   return state().doctors;
 }
+export function getMyDoctors(): Array<any> {
+  return state().myDoctors;
+}

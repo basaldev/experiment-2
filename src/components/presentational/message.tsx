@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { Speaker } from 'components/presentational/speaker';
-import { AccountCircle, Category } from '@material-ui/icons';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Category from '@material-ui/icons/Category';
 import { css } from 'emotion';
 
 export function Message(direction: any, showSpeaker: boolean, content: any, speaker: string) {

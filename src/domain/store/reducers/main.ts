@@ -45,3 +45,12 @@ export function updateDiagnosis(newDianosis:any){
     newDianosis
   ]}));
 }
+
+export function updateMyDoctor(newDoctor:any) {
+  return store.swap(oldState => ({
+    ...oldState,
+    myDoctors: [
+    ...oldState.myDoctors,
+    newDoctor
+  ]}));
+}

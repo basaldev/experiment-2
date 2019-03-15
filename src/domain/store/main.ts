@@ -27,6 +27,7 @@ export type State = {
   documents: Array<any>;
   dianosis: Array<any>;
   doctors: Array<any>;
+  myDoctors: Array<any>;
   loading: boolean;
   inputText:string;
   sessionAttributes: any;
@@ -85,19 +86,24 @@ const defaultState: State = {
     },
   ],
   dianosis: [],
+  myDoctors: [],
   doctors: [{
     img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
     name: 'Joseph Lister',
-    specialisationId: 31
+    specialisationId: 31,
+    covered: true
   },
   {
     img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
     name: 'Henry Gray',
     specialisationId: 95,
+    covered: false
   },
   {
     img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
     name: 'Jonas Salk',
+    specialisationId: 15,
+    covered: false
   }],
   loading: true,
   sessionAttributes: {}

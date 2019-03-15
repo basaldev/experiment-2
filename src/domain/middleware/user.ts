@@ -8,12 +8,18 @@
  */
 
 import { getLogger } from 'domain/logger';
-import { updateChat, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
+import { updateChat, updateMyDoctor, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
 import { getDoctors } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/dianoses-card';
 import { Bubble } from 'components/presentational/bubble';
-
+import page from 'page';
 const logger = getLogger('Middleware/user');
+
+export function saveDoctor(doctor: object){
+  debugger
+  updateMyDoctor(doctor);
+  page('/4');
+}
 
 function normalizeLexResponse(message:string){
   return JSON.parse(message);
@@ -21,7 +27,7 @@ function normalizeLexResponse(message:string){
 
 export function saveDianoses(issue: object){
   //find doctor
-  const doctor = getDoctors();
+  const doctor = getDoctors()[0];
   const newDiagnosis = {
     issue,
     doctor

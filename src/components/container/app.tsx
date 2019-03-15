@@ -1,5 +1,5 @@
 import React from 'react';
-import { currentPage, getMessages, getDocuments, getSessionAttributes, getDianosis ,getInputText, getDoctors } from 'domain/store/selectors/main';
+import { currentPage, getMessages, getDocuments, getSessionAttributes, getDianosis ,getInputText, getMyDoctors } from 'domain/store/selectors/main';
 import { Grid } from '@material-ui/core';
 import { Navbar } from 'components/presentational/navbar';
 import { ChatView } from 'components/container/chat-view';
@@ -26,9 +26,9 @@ export function App() {
       case 'SECOND_PAGE':
         return <DocumentsView documents={getDocuments()} />;
       case 'THIRD_PAGE':
-        return <DianoseView dianosis={getDianosis()} doctors={getDoctors()} />;
+        return <DianoseView dianosis={getDianosis()} />;
       case 'FOURTH_PAGE':
-        return <ActionsView dianosis={getDianosis()} doctors={getDoctors()} />;
+        return <ActionsView dianosis={getDianosis()} doctors={getMyDoctors()} />;
       default:
         return <p>Page not found</p>;
     }
