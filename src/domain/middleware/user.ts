@@ -34,7 +34,7 @@ export function showResponse(lexResponse) {
   if (lexResponse.dialogState === 'Fulfilled') {
 
     updateChat({
-      content: DianosesCard(normalizeLexResponse(lexResponse.message)),
+      content: DianosesCard(normalizeLexResponse(lexResponse.message), true),
       showSpeaker: true,
       direction: 'row',
       speaker: 'BOT'

@@ -26,7 +26,7 @@ export function DianoseView(props:any) {
     <Grid item >
     {props.dianosis.map(tile => {
       return (<>
-      {DianosesCard(tile.issue)}
+      {DianosesCard([{Issue: tile.issue}])}
       {DoctorCard(tile.doctor, false)}
       </>)
     })}
