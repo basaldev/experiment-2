@@ -16,7 +16,6 @@ import page from 'page';
 const logger = getLogger('Middleware/user');
 
 export function saveDoctor(doctor: object){
-  debugger
   updateMyDoctor(doctor);
   page('/4');
 }
