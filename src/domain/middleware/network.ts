@@ -8,7 +8,30 @@
  */
 
 import { getLogger } from 'domain/logger';
-
 const logger = getLogger('Middleware/network');
 
-// put network here
+function genQueryParams(params) {
+  return Object.keys(params)
+      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+      .join('&');
+}
+
+
+export function _fetch(url:string, options:any, queryParams:any) {
+  if(queryParams) {
+      url += (url.indexOf('?') === -1 ? '?' : '&') + genQueryParams(queryParams);
+  }
+  return fetch(url, options);
+}
+
+
+// const botId = `5400840e-7191-48f2-ad8b-e9240e452fdf`
+// const url = `https://console.dialogflow.com/api-client/demo/embedded/${botId}/demoQuery`
+// const query = `?q=${message}&sessionId=6e2c1c6b-223d-dbf1-1410-2b5d4d3d45b9`;
+// const url = `https://rectangular-fender.glitch.me/${botId}/`
+const url =  `https://rectangular-fender.glitch.me/chat/`
+
+export async function postMessage(message): any {
+  const r = await fetch(`${url}${message}`, { method: 'GET'})
+  return r.json();
+}

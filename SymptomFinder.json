@@ -1,0 +1,106 @@
+{
+  "id": "7233f598-2ac2-4be4-8cb5-b371548236f0",
+  "name": "SymptomFinder",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "91e3ff4c-edd3-4525-9281-55616564a94f",
+          "required": true,
+          "dataType": "@symptoms",
+          "name": "symptoms",
+          "value": "$symptoms",
+          "prompts": [
+            "Tell me whats wrong?",
+            "Can you tell me more?",
+            "Is there any more issues?"
+          ],
+          "isList": true
+        },
+        {
+          "id": "d7044190-2a52-486c-8669-847e74f7ef71",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "any",
+          "value": "$any",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "cortanaCommand": {
+    "navigateOrService": "NAVIGATE",
+    "target": ""
+  },
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "userSays": [
+    {
+      "id": "865054b4-42b2-4a35-8425-109ce7b1dcdf",
+      "data": [
+        {
+          "text": "i am not feeling well"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "e03229a4-638f-4fa9-b3c8-81aca8c5e0ca",
+      "data": [
+        {
+          "text": "cough",
+          "alias": "symptoms",
+          "meta": "@symptoms",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "be9d1f01-79ff-4298-8111-ce5ca867e48c",
+      "data": [
+        {
+          "text": "i have",
+          "alias": "any",
+          "meta": "@sys.any",
+          "userDefined": true
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "back pain",
+          "alias": "symptoms",
+          "meta": "@symptoms",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    }
+  ],
+  "followUpIntents": [],
+  "liveAgentHandoff": false,
+  "endInteraction": false,
+  "templates": []
+}
