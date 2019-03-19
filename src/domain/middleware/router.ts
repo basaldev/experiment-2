@@ -34,20 +34,20 @@ export default function startRouters() {
 
   homeRouter(ctx => {
     logger.debug('Home route');
-    updateCurrentPage({ name: 'HOME_PAGE' });
+    updateCurrentPage({ name: 'HOME_PAGE', value: 0 });
   });
 
   secondRouter(ctx => {
     logger.debug('Document route');
-    updateCurrentPage({ name: 'SECOND_PAGE' });
+    updateCurrentPage({ name: 'SECOND_PAGE', value: 1 });
   });
   thirdRouter(ctx => {
     logger.debug('Document route');
-    updateCurrentPage({ name: 'THIRD_PAGE' });
+    updateCurrentPage({ name: 'THIRD_PAGE', value: 2 });
   });
   fourthRouter(ctx => {
     logger.debug('Document route');
-    updateCurrentPage({ name: 'FOURTH_PAGE' });
+    updateCurrentPage({ name: 'FOURTH_PAGE', value: 3 });
   });
 
   page();
@@ -55,5 +55,5 @@ export default function startRouters() {
 
 export function navigate(route:string, event:any){
   event.preventDefault();
-   page(route)
+  page(route)
 }

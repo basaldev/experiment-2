@@ -1,16 +1,15 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Avatar } from '@material-ui/core';
 import { Speaker } from 'components/presentational/speaker';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Category from '@material-ui/icons/Category';
+import Favorite from '@material-ui/icons/Favorite';
 import { css } from 'emotion';
-
+import { user1 } from '../../assets/user1';
 export function Message(direction: any, showSpeaker: boolean, content: any, speaker: string) {
   let icon;
   if(speaker === 'BOT'){
-    icon = <Category />
+    icon = <Favorite />
   } else {
-    icon = <AccountCircle />
+    icon = <img className={css`height: 100%;`} src={user1}></img>
   }
   return (
     <Grid container key={content + Math.random()} spacing={16} direction={direction} wrap="nowrap" className={css`

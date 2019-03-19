@@ -10,10 +10,10 @@
 import { createAtom } from 'js-atom';
 import { Bubble } from 'components/presentational/bubble';
 
-export type HomePage = { name: 'HOME_PAGE' };
-export type SecondPage = { name: 'SECOND_PAGE' };
-export type ThirdPage = { name: 'THIRD_PAGE' };
-export type FourthPage = { name: 'FOURTH_PAGE' };
+export type HomePage = { name: 'HOME_PAGE', value: 0 };
+export type SecondPage = { name: 'SECOND_PAGE', value: 1 };
+export type ThirdPage = { name: 'THIRD_PAGE', value: 2 };
+export type FourthPage = { name: 'FOURTH_PAGE', value: 3 };
 
 export type Page = HomePage | SecondPage | ThirdPage | FourthPage;
 
@@ -34,7 +34,7 @@ export type State = {
 };
 
 const defaultState: State = {
-  currentPage: { name: 'HOME_PAGE' },
+  currentPage: { name: 'HOME_PAGE', value: 0 },
   allItems: [],
   filteredItems: [],
   messages: [  {

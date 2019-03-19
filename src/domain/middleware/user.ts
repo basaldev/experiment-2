@@ -54,7 +54,7 @@ export function showResponse(botResponse) {
     });
     updateChat({
       content: DianosesCard(result, true),
-      showSpeaker: true,
+      showSpeaker: false,
       direction: 'row',
       speaker: 'BOT'
     });

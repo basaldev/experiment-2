@@ -45,8 +45,8 @@ function getDiagnose(token, birthYear, gender, symptoms) {
     return found.ID;
   })
   const LANGUAGE = "en-gb"
-  const YEAR_OF_BIRTH = '1991'
-  const GENDER = 'male'
+  const YEAR_OF_BIRTH = birthYear ? birthYear : '1991';
+  const GENDER = gender ? gender : 'male';
   const SYMPTOMS = `[${foundSymptoms.join(',')}]`;
   const endpoint = "https://healthservice.priaid.ch/diagnosis"
   const url = `${endpoint}?language=${LANGUAGE}&gender=${GENDER}&year_of_birth=${YEAR_OF_BIRTH}&symptoms=${SYMPTOMS}&token=${token}`;
@@ -70,11 +70,15 @@ app.post('/webhook', function(req, res){
   let intentMap = new Map();
   intentMap.set('SymptomFinder', async (agent) => {
       const key = await getKey();
-      const diagnose = await getDiagnose(key.Token, undefined, undefined, req.body.queryResult.parameters.symptoms);
+      const diagnose = await getDiagnose(key.Token, agent.parameters.age, agent.parameters.gender, req.body.queryResult.parameters.symptoms);
       if(diagnose.length === 0 && req.body.queryResult.parameters.symptoms.length > 1) {
         agent.add(`There doesn't seem to be a diagnose for that combination, try searching these symptoms indiviually`);
       } else {
-        agent.add(JSON.stringify(diagnose));
+        if(diagnose.length > 3) {
+          agent.add(JSON.stringify(diagnose.slice(0, 3)));
+        } else {
+          agent.add(JSON.stringify(diagnose));
+        }
       }
     });
     agent.handleRequest(intentMap);

@@ -43,7 +43,7 @@ export function App() {
         {content}
       </Grid>
       <Grid item xs={12}>
-        <Navbar routes={[
+        <Navbar value={currentPage().value} routes={[
           (e) => { navigate('/', e)},
           (e) => { navigate('/2', e)},
           (e) => { navigate('/3', e)},
