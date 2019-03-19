@@ -9,14 +9,13 @@ const find = require('lodash.find');
 const app = express();
 const symptomsLookup = require('./symptons');
 const { WebhookClient } = require('dialogflow-fulfillment');
+const sample = require('lodash.sample');
 
 app.use(express.json());
 app.use(cors())
-
 const CryptoJS = require('crypto-js');
 function getKey(){
 const uri = 'https://authservice.priaid.ch/login';
-const sample = require('lodash.sample');
 const liveAccounts = [
  {
  username: 'Qp73N_EXODEVHUB_COM_AUT', // INFO
@@ -51,7 +50,6 @@ function getDiagnose(token, birthYear, gender, symptoms) {
   const SYMPTOMS = `[${foundSymptoms.join(',')}]`;
   const endpoint = "https://healthservice.priaid.ch/diagnosis"
   const url = `${endpoint}?language=${LANGUAGE}&gender=${GENDER}&year_of_birth=${YEAR_OF_BIRTH}&symptoms=${SYMPTOMS}&token=${token}`;
-  console.log(url)
   return fetch(url).then(res => res.json())
 }
 
@@ -78,19 +76,17 @@ app.post('/webhook', function(req, res){
     agent.add(`I didn't understand`);
     agent.add(`I'm sorry, can you try again?`);
   }
-  function  symptomFinder(agent){
-    getKey().then(data => {
-      getDiagnose(data.Token, undefined, undefined, req.body.queryResult.parameters.symptoms).then(data => {
-        console.log(data);
-        agent.add(JSON.stringify(data));
-      }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
-  }
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
-  intentMap.set('SymptomFinder',  symptomFinder);
-  agent.handleRequest(intentMap);
+  intentMap.set('SymptomFinder', async (agent) => {
+      const key = await getKey();
+      const diagnose = await getDiagnose(key.Token, undefined, undefined, req.body.queryResult.parameters.symptoms);
+      agent.add(JSON.stringify(diagnose));
+      agent.add('Thanks');
+
+    });
+    agent.handleRequest(intentMap);
 })
 
 // listen for requests :)

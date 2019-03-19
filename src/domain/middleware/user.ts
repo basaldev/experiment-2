@@ -22,7 +22,12 @@ export function saveDoctor(doctor: object) {
 }
 
 function normalizeBotResponse(message: string) {
-  return JSON.parse(message);
+  try {
+    const result = JSON.parse(message)
+    return result;
+  } catch (error) {
+    return message;
+  }
 }
 
 export function saveDianoses(issue: object) {
@@ -37,26 +42,28 @@ export function saveDianoses(issue: object) {
 
 //create react app
 export function showResponse(botResponse) {
-  debugger
-  updateChat({
-    content: Bubble(botResponse.result.fulfillment.speech),
-    showSpeaker: true,
-    direction: 'row',
-    speaker: 'BOT'
-  },
-  );
+  // debugger
+  const result = normalizeBotResponse(botResponse.result.fulfillment.speech);
+
+  if(typeof result === 'object'){
+    updateChat({
+      content: DianosesCard(result, true),
+      showSpeaker: true,
+      direction: 'row',
+      speaker: 'BOT'
+    });
+  } else {
+    updateChat({
+      content: Bubble(botResponse.result.fulfillment.speech),
+      showSpeaker: true,
+      direction: 'row',
+      speaker: 'BOT'
+    });
+  }
 }
 
 
 export function pushChat(textString, lexruntime, sessionAttributes) {
-  const params = {
-    botAlias: '$LATEST',
-    botName: 'Tere',
-    inputText: textString,
-    userId: 'tere-thursday',
-    sessionAttributes: sessionAttributes
-  };
-  ;
   updateChat({
     content: Bubble(textString),
     showSpeaker: true,
