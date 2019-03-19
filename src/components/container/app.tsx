@@ -42,7 +42,7 @@ export function App() {
     `}>
         {content}
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} className={css`border-top: 1px solid #efefef;`}>
         <Navbar value={currentPage().value} routes={[
           (e) => { navigate('/', e)},
           (e) => { navigate('/2', e)},

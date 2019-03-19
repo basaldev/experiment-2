@@ -26,7 +26,7 @@ export function _fetch(url:string, options:any, queryParams:any) {
 
 const url =  `https://dialogflow-diagnose.now.sh/chat/`
 
-export async function postMessage(message): any {
+export async function postMessage(message) {
   const r = await fetch(`${url}${message}`, { method: 'GET'})
   return r.json();
 }

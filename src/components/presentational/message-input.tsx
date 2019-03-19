@@ -22,17 +22,22 @@ export class MessageInput extends React.Component {
   }
   render() {
     return (
-      <Paper elevation={1} >
-        <Grid container direction="row" justify="space-between">
+        <Grid container direction="row" justify="space-between" className={css`
+       border-top: 1px solid #efefef;
+      `}>
           <Grid item xs={10}>
             <InputBase className={css`
+            && {
           padding: 8px;
+          width: 100%;
+          line-height: 30px;
+            }
         `} onKeyUp={(e) => {
                 this.setState({ inputRef: onKeyPressUpdateInputText(e) });
               }} placeholder="Send a message" />
           </Grid>
           <Grid item>
-            <IconButton color="primary" onClick={() => {
+            <IconButton className={css`height:100%;`}color="primary" onClick={() => {
               if (this.props.textInput !== '') {
                 pushChat(
                   this.props.textInput,
@@ -47,7 +52,6 @@ export class MessageInput extends React.Component {
             </IconButton>
           </Grid>
         </Grid>
-      </Paper>
     )
   }
 }

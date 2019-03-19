@@ -8,9 +8,11 @@ function NoData(dianosis: Array<any>){
   if(dianosis.length === 0) {
    return (
     <Grid item >
-    <Typography gutterBottom variant="h5" component="h2">
+    <Grid container>
+    <Typography gutterBottom variant="h5" component="h2" align="center">
                 No Dianosis yet
     </Typography>
+    </Grid>
     </Grid>
    )
   }
@@ -18,8 +20,9 @@ function NoData(dianosis: Array<any>){
 
 export function DianoseView(props:any) {
   return (
-    <Grid container direction="column" spacing={8} className={css`
+    <Grid container direction="column" justify="center" spacing={8} className={css`
       padding: 16px;
+      min-height: 50vh;
     `}>
     {NoData(props.dianosis)}
     <Grid item >

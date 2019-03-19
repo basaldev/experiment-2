@@ -18,10 +18,11 @@ export class ChatView extends React.Component {
   }
   render() {
     return (
-      <div className={css`padding: 8px;`}>
+      <div>
         <div ref="scrollContainer" className={css`
       overflow:scroll;
       height: 80vh;
+      padding: 16px 16px 0px 16px;
     `}>
           {this.props.messages.map((message => {
             return Message(message.direction, message.showSpeaker, message.content, message.speaker);

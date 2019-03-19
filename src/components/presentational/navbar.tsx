@@ -17,8 +17,8 @@ export function Navbar(props: any){
         showLabels
       >
         <BottomNavigationAction onClick={props.routes[0]} label="Chat" icon={<ChatIcon />} />
-        <BottomNavigationAction onClick={props.routes[1]}label="Profile" icon={<Assignment />} />
-        <BottomNavigationAction onClick={props.routes[2]}label="Dianose" icon={<AssignmentLate />} />
+        <BottomNavigationAction onClick={props.routes[1]} label="Profile" icon={<Assignment />} />
+        <BottomNavigationAction onClick={props.routes[2]} label="Dianose" icon={<AssignmentLate />} />
         <BottomNavigationAction onClick={props.routes[3]} label="Treament" icon={<AssignmentInd />} />
       </BottomNavigation>
   )
