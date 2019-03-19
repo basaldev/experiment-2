@@ -47,6 +47,12 @@ export function showResponse(botResponse) {
 
   if(typeof result === 'object'){
     updateChat({
+      content: Bubble(`Here are some possible diagnosis`),
+      showSpeaker: true,
+      direction: 'row',
+      speaker: 'BOT'
+    });
+    updateChat({
       content: DianosesCard(result, true),
       showSpeaker: true,
       direction: 'row',

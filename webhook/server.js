@@ -55,7 +55,6 @@ function getDiagnose(token, birthYear, gender, symptoms) {
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/chat/:message', function(request, response) {
-  // console.log(request);
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   fetch(`https://console.dialogflow.com/api-client/demo/embedded/5400840e-7191-48f2-ad8b-e9240e452fdf/demoQuery?q=${request.params.message}&sessionId=2d615127-dd39-ced7-c5b8-497e777bd146`)
@@ -68,23 +67,15 @@ app.get('/chat/:message', function(request, response) {
 app.post('/webhook', function(req, res){
   const agent = new WebhookClient({ request: req, response: res });
 
-  function welcome(agent) {
-    agent.add(`Welcome to my agent!`);
-  }
-
-  function fallback(agent) {
-    agent.add(`I didn't understand`);
-    agent.add(`I'm sorry, can you try again?`);
-  }
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcome);
-  intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('SymptomFinder', async (agent) => {
       const key = await getKey();
       const diagnose = await getDiagnose(key.Token, undefined, undefined, req.body.queryResult.parameters.symptoms);
-      agent.add(JSON.stringify(diagnose));
-      agent.add('Thanks');
-
+      if(diagnose.length === 0 && req.body.queryResult.parameters.symptoms.length > 1) {
+        agent.add(`There doesn't seem to be a diagnose for that combination, try searching these symptoms indiviually`);
+      } else {
+        agent.add(JSON.stringify(diagnose));
+      }
     });
     agent.handleRequest(intentMap);
 })
