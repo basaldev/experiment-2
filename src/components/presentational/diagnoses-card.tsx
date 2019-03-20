@@ -18,7 +18,7 @@ import {
 import { saveDianoses } from 'domain/middleware/user';
 import { css } from 'emotion';
 
-export function DianosesCard(content: any, showSaveButton: boolean) {
+export function DiagnosesCard(content: any, showSaveButton: boolean) {
   const issues = content.map((tile) => {
     const { Issue } = tile;
     const Action = showSaveButton ? (<CardActions><Button size="small" color="primary" onClick={() => saveDianoses(Issue)}>Save pre-dianoses</Button></CardActions>) : null;

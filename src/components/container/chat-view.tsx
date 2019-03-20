@@ -28,7 +28,7 @@ export class ChatView extends React.Component {
             return Message(message.direction, message.showSpeaker, message.content, message.speaker);
           }))}
         </div>
-        <MessageInput scrollContainer={this.refs.scrollContainer} sessionAttributes={this.props.sessionAttributes} textInput={this.props.textInput} lexruntime={this.props.lexruntime} />
+        <MessageInput className={css`margin: 0 8px;`} scrollContainer={this.refs.scrollContainer} sessionAttributes={this.props.sessionAttributes} textInput={this.props.textInput} lexruntime={this.props.lexruntime} />
       </div>
     )
   }

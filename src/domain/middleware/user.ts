@@ -10,7 +10,7 @@
 import { getLogger } from 'domain/logger';
 import { updateChat, updateMyDoctor, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
 import { getDoctors } from 'domain/store/selectors/main';
-import { DianosesCard } from 'components/presentational/dianoses-card';
+import { DiagnosesCard } from 'components/presentational/diagnoses-card';
 import { Bubble } from 'components/presentational/bubble';
 import { postMessage } from 'domain/middleware/network';
 import page from 'page';
@@ -53,7 +53,7 @@ export function showResponse(botResponse) {
       speaker: 'BOT'
     });
     updateChat({
-      content: DianosesCard(result, true),
+      content: DiagnosesCard(result, true),
       showSpeaker: false,
       direction: 'row',
       speaker: 'BOT'
