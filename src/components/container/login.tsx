@@ -73,7 +73,6 @@ export const Login = ({
             <img src={LogoImg} width="200" />
             <Typography
               align="center"
-              variant="title"
               className={css`
                 padding: 30px 0;
               `}

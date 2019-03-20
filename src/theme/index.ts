@@ -11,7 +11,7 @@ const palette = {
     light: 'rgba(85, 193, 226)',
     main: 'rgb(85, 193, 226)',
     dark: 'rgb(85, 193, 226)',
-    contrastText: '#fff',
+    contrastText: '#000',
   },
   secondary: {
     light: '#55C1E2',
@@ -110,14 +110,12 @@ export const themeOptions: ThemeOptions = {
     },
     MuiListItemText: {
       primary: {
-        color: '#fff',
         fontWeight: 300,
         opacity: 0.7,
       },
     },
     MuiListItemIcon: {
       root: {
-        color: '#fff',
         opacity: 0.7,
       },
     },

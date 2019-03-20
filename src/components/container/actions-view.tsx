@@ -35,6 +35,10 @@ function NoData(array: Array<any>) {
         </Grid>
       </Grid>
     );
+  } else {
+    return (
+      <Typography gutterBottom variant="h5" component="h2" align="center">Your Treatments</Typography>
+    )
   }
 }
 
@@ -50,6 +54,7 @@ export function ActionsView(props: any) {
         min-height: 50vh;
       `}
     >
+
       {NoData(props.doctors)}
       <Grid item>
         {props.doctors.map(tile => DoctorCard(tile, true))}

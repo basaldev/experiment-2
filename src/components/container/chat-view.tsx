@@ -24,7 +24,7 @@ export class ChatView extends React.Component {
           ref="scrollContainer"
           className={css`
             overflow: scroll;
-            height: 80vh;
+            height: 76vh;
             padding: 16px 16px 0px 16px;
           `}
         >

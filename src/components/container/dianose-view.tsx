@@ -53,7 +53,7 @@ export function DianoseView(props: any) {
             <>
             <Typography gutterBottom variant="h5" component="h2" align="center">Your Prediagnosis</Typography>
               {DianosesCard([{ Issue: tile.issue }], false)}
-              <Typography variant="body1" component="p" align="center">Your Prediagnosis</Typography>
+              <Typography variant="body1" component="p" align="center">Recommended Doctors</Typography>
               {DoctorCard(tile.doctor, false)}
             </>
           );
