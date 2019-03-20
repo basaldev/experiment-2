@@ -47,7 +47,6 @@ export function App() {
         return <p>Page not found</p>;
     }
   })(currentPage().name);
-  console.log(currentPage().name  === 'LOGIN_PAGE' ? 'visibility:hidden;' : '');
   return (
     <Grid container>
       <Grid
