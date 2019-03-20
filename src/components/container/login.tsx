@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Typography, Button, Grid, Avatar } from '@material-ui/core';
 import { css } from 'emotion';
 import { onChangeCurrentUser } from 'domain/middleware/user';
+import * as LogoImg from 'assets/logo.png';
 
 function SampleUser({ user }) {
   return (
@@ -58,19 +59,30 @@ export const Login = ({
       <Grid
         item
         className={css`
-          padding-top: 20vh;
+          height: 90vh;
         `}
       >
-        <Typography
-          align="center"
-          variant="body2"
-          className={css`
-            margin-bottom: 24px !important;
-          `}
-        >
-          Select Sample User
-        </Typography>
-        {sampleUsers.map(user => <SampleUser key={user.id} user={user} />)}
+        <Grid container justify="center" alignItems="center" alignContent="center" className={css`
+          height: 100%;
+        `}>
+          <div
+            className={css`
+              text-align: center;
+            `}
+          >
+            <img src={LogoImg} width="200" />
+            <Typography
+              align="center"
+              variant="title"
+              className={css`
+                padding: 30px 0;
+              `}
+            >
+              Select Sample User
+            </Typography>
+          </div>
+          {sampleUsers.map(user => <SampleUser key={user.id} user={user} />)}
+        </Grid>
       </Grid>
     </Grid>
   );
