@@ -3,8 +3,8 @@ import { Grid, Avatar } from '@material-ui/core';
 import { Speaker } from 'components/presentational/speaker';
 import Favorite from '@material-ui/icons/Favorite';
 import { css } from 'emotion';
-import { user1 } from '../../assets/user1';
-export function Message(direction: any, showSpeaker: boolean, content: any, speaker: string) {
+
+export function Message(direction: any, showSpeaker: boolean, content: any, speaker: string, user:any) {
   let icon;
   if (speaker === 'BOT') {
     icon = <Favorite />;
@@ -14,7 +14,7 @@ export function Message(direction: any, showSpeaker: boolean, content: any, spea
         className={css`
           height: 100%;
         `}
-        src={user1}
+        src={user.avatar}
       />
     );
   }

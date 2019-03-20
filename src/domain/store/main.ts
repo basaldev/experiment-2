@@ -9,6 +9,8 @@
 
 import { createAtom } from 'js-atom';
 import { Bubble } from 'components/presentational/bubble';
+import * as User1Image from 'assets/user1.jpg';
+import * as User2Image from 'assets/user2.png';
 
 export type HomePage = { name: 'HOME_PAGE'; value: 0 };
 export type SecondPage = { name: 'SECOND_PAGE'; value: 1 };
@@ -49,15 +51,15 @@ const defaultState: State = {
   },
   sampleUsers: [
     {
-      name: 'user one',
+      name: 'Jessa Maryanne',
       id: 'xd0ktRwSbthgZJOMKxBn44potD52',
-      avatar: '',
+      avatar: User1Image,
       age: 21,
     },
     {
-      name: 'user two',
+      name: 'Mathew Gib',
       id: 'y48Udj8T5Pf7r402LX2qYqNUYmz2',
-      avatar: '',
+      avatar: User2Image,
       age: 59,
     },
   ],

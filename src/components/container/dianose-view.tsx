@@ -19,11 +19,15 @@ function NoData(dianosis: Array<any>) {
   if (dianosis.length === 0) {
     return (
       <Grid item>
-        <Grid container>
+        <Grid container direction="column" alignContent="center" className={css`text-align:center;`}>
+        <Grid item xs={12}>
           <Typography gutterBottom variant="h5" component="h2" align="center">
-            You haven't save a diagnoses yet.
+            You don't have any diagnosis yet
           </Typography>
-          <Typography align="center">Go to chat, and tell me your symptoms</Typography>
+          </Grid>
+          <Grid item xs={12}>
+          <Typography align="center">Go to the chat and tell me your symptons</Typography>
+          </Grid>
         </Grid>
       </Grid>
     );
