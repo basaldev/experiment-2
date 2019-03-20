@@ -26,7 +26,7 @@ export function _fetch(url: string, options: any, queryParams: any) {
   return fetch(url, options);
 }
 
-const url = `https://dialogflow-diagnose.now.sh/chat/`;
+const url = `http://localhost:3000/chat/`;
 
 export async function postMessage(message) {
   const r = await fetch(`${url}${message}`, { method: 'GET' });

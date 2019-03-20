@@ -10,12 +10,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { getLogger } from 'domain/logger';
+import { MuiThemeProvider } from '@material-ui/core';
+import { theme } from 'theme';
 
 const logger = getLogger('Renderer');
 
 export default async function render() {
   const App = (await import('components/container/app')).App;
-  ReactDOM.render(<App />, document.getElementById('app'));
+  ReactDOM.render(<MuiThemeProvider theme={theme}><App /></MuiThemeProvider>, document.getElementById('app'));
 }
 
 declare const module: {
