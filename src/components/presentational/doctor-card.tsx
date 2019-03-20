@@ -1,23 +1,21 @@
 import {
-  Grid,
   Chip,
   Divider,
   List,
   ListItem,
   ListItemText,
   Button,
-  GridListTile,
   CardContent,
   Card,
   CardActions,
   Typography,
-  CardActionArea,
   CardMedia
 } from '@material-ui/core';
 import TickIcon from '@material-ui/icons/Check';
 import { css } from 'emotion';
 import React from 'react';
-import { saveDoctor } from 'domain/middleware/user';
+import { saveDoctor, saveTreatment } from 'domain/middleware/user';
+import { getDianosis, getUser } from 'domain/store/selectors/main';
 
 function expandedSection() {
   return (
@@ -38,46 +36,47 @@ function expandedSection() {
   );
 }
 
-export function DoctorCard(tile: any, expanded: boolean) {
+export function DoctorCard(doctor: any, expanded: boolean) {
   const expandedContent = expanded ? expandedSection() : '';
   return (
-    <Card key={tile.name + Math.random()}>
+    <Card key={doctor.id}>
       <CardMedia
         className={css`
           min-height: 30vh;
         `}
-        image={tile.img}
-        title={tile.name}
+        image={doctor.img}
+        title={doctor.name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {tile.name} <Chip color="primary" label="Covered by Insurance" icon={<TickIcon />} />
+          {doctor.name} <Chip color="primary" label="Covered by Insurance" icon={<TickIcon />} />
         </Typography>
-        <Typography component="p">
-          During our last vist I prescribed Medicine A and B for your back pain, <strong>daily for 3 weeks</strong>
-        </Typography>
+        <Typography component="p">MD. General Practitioner.</Typography>
       </CardContent>
       {expandedContent}
-      <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            saveDoctor(tile);
-          }}
-        >
-          Book an Appointment
-        </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            window.open('tel:900300400');
-          }}
-        >
-          Call
-        </Button>
-      </CardActions>
+      {!expanded && (
+        <CardActions>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              saveDoctor(doctor);
+              saveTreatment(getDianosis(), doctor, getUser(), '');
+            }}
+          >
+            Book an Appointment
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              window.open('tel:900300400');
+            }}
+          >
+            Call
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 }

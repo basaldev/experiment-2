@@ -29,6 +29,10 @@ export function getDianosis(): Array<any> {
   return state().dianosis;
 }
 
+export function getTreatment(): any {
+  return state().treatment;
+}
+
 export function getDoctors(): Array<any> {
   return state().doctors;
 }
@@ -37,10 +41,10 @@ export function getMyDoctors(): Array<any> {
   return state().myDoctors;
 }
 
-export function getUser(): { id: string } {
+export function getUser(): any {
   return state().user;
 }
 
-export function getSampleUsers(): Array<{ id: string; name: string; avatar: string; age: number }> {
+export function getSampleUsers(): Array<any> {
   return state().sampleUsers;
 }

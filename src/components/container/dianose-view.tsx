@@ -20,7 +20,6 @@ function NoData(dianosis: Array<any>) {
 }
 
 export function DianoseView(props: any) {
-  console.log('dianosis:', props.dianosis);
   return (
     <Grid
       container

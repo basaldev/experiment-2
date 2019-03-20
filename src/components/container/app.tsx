@@ -5,10 +5,11 @@ import {
   getDocuments,
   getSessionAttributes,
   getDianosis,
+  getTreatment,
   getInputText,
   getMyDoctors,
   getUser,
-  getSampleUsers,
+  getSampleUsers
 } from 'domain/store/selectors/main';
 import { Grid } from '@material-ui/core';
 import { Navbar } from 'components/presentational/navbar';
@@ -16,6 +17,7 @@ import { ChatView } from 'components/container/chat-view';
 import { DocumentsView } from 'components/container/documents-view';
 import { DianoseView } from 'components/container/dianose-view';
 import { ActionsView } from 'components/container/actions-view';
+import { DoctorView } from 'components/container/doctor-view';
 import { navigate } from 'domain/middleware/router';
 import { css } from 'emotion';
 import { Login } from './login';
@@ -23,6 +25,8 @@ import { Login } from './login';
 const lexruntime = new window['AWS'].LexRuntime();
 
 export function App() {
+  const user = getUser();
+
   const content = (pageName => {
     switch (pageName) {
       case 'HOME_PAGE':
@@ -39,13 +43,17 @@ export function App() {
       case 'THIRD_PAGE':
         return <DianoseView dianosis={getDianosis()} />;
       case 'FOURTH_PAGE':
-        return <ActionsView dianosis={getDianosis()} doctors={getMyDoctors()} />;
+        return <ActionsView dianosis={getDianosis()} doctors={getMyDoctors()} patient={getUser()} />;
       case 'LOGIN_PAGE':
         return <Login sampleUsers={getSampleUsers()} />;
       default:
         return <p>Page not found</p>;
     }
   })(currentPage().name);
+
+  if (user.role === 'doctor') {
+    return <DoctorView treatment={getTreatment()} />;
+  }
 
   return (
     <Grid container>
@@ -80,7 +88,7 @@ export function App() {
             },
             e => {
               navigate('/4', e);
-            },
+            }
           ]}
         />
       </Grid>

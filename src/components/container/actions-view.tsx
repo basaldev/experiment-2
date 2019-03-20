@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { css } from 'emotion';
 import { DoctorCard } from 'components/presentational/doctor-card';
+
 export function ActionsView(props: any) {
+  const { diagnosis, patient } = props;
   return (
     <Grid
       container
@@ -11,7 +13,10 @@ export function ActionsView(props: any) {
         padding: 16px;
       `}
     >
-      {props.doctors.map(tile => DoctorCard(tile, true))}
+      <Typography gutterBottom variant="h5" component="h2" align="center">
+        Your Treatment
+      </Typography>
+      {props.doctors.map(doctor => DoctorCard(doctor, true))}
     </Grid>
   );
 }

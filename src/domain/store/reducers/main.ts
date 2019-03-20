@@ -35,6 +35,10 @@ export function updateDiagnosis(newDianosis: any) {
   }));
 }
 
+export function updateTreatment(newTreatment: any) {
+  return store.swap(oldState => ({ ...oldState, treatment: newTreatment }));
+}
+
 export function updateMyDoctor(newDoctor: any) {
   return store.swap(oldState => ({
     ...oldState,

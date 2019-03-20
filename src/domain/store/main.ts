@@ -18,6 +18,7 @@ export type State = {
   messages: Array<any>;
   documents: Array<any>;
   dianosis: Array<any>;
+  treatment: object;
   doctors: Array<any>;
   myDoctors: Array<any>;
   loading: boolean;
@@ -31,6 +32,7 @@ export type State = {
     id: string;
     avatar: string;
     age: number;
+    role: 'patient' | 'doctor';
   }>;
 };
 
@@ -40,22 +42,18 @@ const defaultState: State = {
   },
   sampleUsers: [
     {
-      name: 'User 1 - Patient Bob',
+      name: 'User 1 - Patient',
       id: 'xd0ktRwSbthgZJOMKxBn44potD52',
       avatar: '',
-      age: 21
+      age: 21,
+      role: 'patient'
     },
     {
-      name: 'User 2 - Patient Sally',
-      id: 'abcd1234',
-      avatar: '',
-      age: 24
-    },
-    {
-      name: 'User 3 - Doctor John',
+      name: 'User 2 - Doctor',
       id: 'y48Udj8T5Pf7r402LX2qYqNUYmz2',
       avatar: '',
-      age: 59
+      age: 59,
+      role: 'doctor'
     }
   ],
   currentPage: { name: 'HOME_PAGE', value: 0 },
@@ -72,21 +70,43 @@ const defaultState: State = {
   inputText: '',
   documents: [],
   dianosis: [],
+  treatment: {
+    id: 'abc123',
+    diagnosis: null,
+    doctor: {
+      name: 'User 2 - Doctor',
+      id: 'y48Udj8T5Pf7r402LX2qYqNUYmz2',
+      avatar: '',
+      age: 59,
+      role: 'doctor'
+    },
+    patient: {
+      name: 'User 1 - Patient',
+      id: 'xd0ktRwSbthgZJOMKxBn44potD52',
+      avatar: '',
+      age: 21,
+      role: 'patient'
+    },
+    prescription: ''
+  },
   myDoctors: [],
   doctors: [
     {
+      id: 0,
       img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
       name: 'Joseph Lister',
       specialisationId: 31,
       covered: true
     },
     {
+      id: 1,
       img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
       name: 'Henry Gray',
       specialisationId: 95,
       covered: false
     },
     {
+      id: 2,
       img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       name: 'Jonas Salk',
       specialisationId: 15,

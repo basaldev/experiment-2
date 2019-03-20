@@ -3,16 +3,15 @@ import { css } from 'emotion';
 import { scrollbottom } from 'domain/middleware/user';
 import { Message } from 'components/presentational/message';
 import { MessageInput } from 'components/presentational/message-input';
-export class ChatView extends React.Component {
-  props: {
-    sessionAttributes: any;
-    textInput: string;
-    lexruntime: any;
-    messages: Array<any>;
-  };
-  constructor(props) {
-    super(props);
-  }
+
+interface Props {
+  sessionAttributes: any;
+  textInput: string;
+  lexruntime: any;
+  messages: Array<any>;
+}
+
+export class ChatView extends React.Component<Props, {}> {
   componentDidUpdate() {
     scrollbottom(this.refs.scrollContainer);
   }

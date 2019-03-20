@@ -6,6 +6,7 @@ import {
   updateInputText,
   updateSnackbarContent,
   updateDiagnosis,
+  updateTreatment,
   updateSnackbarVisible
 } from 'domain/store/reducers/main';
 import { getDoctors, getUser } from 'domain/store/selectors/main';
@@ -35,7 +36,8 @@ function normalizeBotResponse(message: string) {
 
 export function saveDianoses(issue: object) {
   //find doctor
-  const doctor = getDoctors()[0];
+  const zeroOneOrTwo = Math.floor(Math.random() * 3); // temporary - get random doctor of the 3 hardcoded ones
+  const doctor = getDoctors()[zeroOneOrTwo];
   const newDiagnosis = {
     id: uuid(),
     issue,
@@ -43,6 +45,17 @@ export function saveDianoses(issue: object) {
   };
   updateDiagnosis(newDiagnosis);
   page('/3');
+}
+
+export function saveTreatment(diagnosis: object, doctor: object, patient: object, prescription: string) {
+  const newTreatment = {
+    id: uuid(),
+    diagnosis,
+    doctor,
+    patient,
+    prescription
+  };
+  updateTreatment(newTreatment);
 }
 
 export function showResponse(botResponse) {
