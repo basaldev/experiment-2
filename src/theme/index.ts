@@ -183,7 +183,7 @@ export const themeOptions: ThemeOptions = {
     },
     MuiButton: {
       contained: {
-        borderRadius: '0',
+        borderRadius: '100px',
         boxShadow: 'none',
       },
       containedPrimary: {

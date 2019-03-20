@@ -9,18 +9,35 @@ function SampleUser({ user }) {
       <Grid
         container
         alignItems="center"
+        justify="center"
         className={css`
           margin-bottom: 16px;
         `}
       >
       <Grid item>
-        <Avatar>{user.name[0]}</Avatar>
+        <Avatar
+        className={css`
+        && {
+          color: #fff;
+          height: 60px;
+          width: 60px;
+        }
+        `}
+        ><img className={css`
+          height: 100%;
+          width: auto;
+        `
+        } src={user.avatar}></img></Avatar>
         </Grid>
-        <Grid item xs={12} alignContent="center">
+        <Grid item xs={12}>
         <Button
+          variant="contained"
           onClick={() => onChangeCurrentUser(user)}
           className={css`
-            margin-left: 8px !important;
+          && {
+            margin:8px auto;
+            display:block;
+          }
           `}
         >
           {user.name}

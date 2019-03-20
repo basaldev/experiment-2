@@ -31,6 +31,7 @@ export function App() {
             messages={getMessages()}
             textInput={getInputText()}
             lexruntime={lexruntime}
+            user={getUser()}
             sessionAttributes={getSessionAttributes()}
           />
         );
@@ -46,7 +47,7 @@ export function App() {
         return <p>Page not found</p>;
     }
   })(currentPage().name);
-
+  console.log(currentPage().name  === 'LOGIN_PAGE' ? 'visibility:hidden;' : '');
   return (
     <Grid container>
       <Grid
@@ -64,6 +65,7 @@ export function App() {
         xs={12}
         className={css`
           border-top: 1px solid #efefef;
+          ${currentPage().name  === 'LOGIN_PAGE' ? 'visibility:hidden;' : ''}
         `}
       >
         <Navbar

@@ -38,7 +38,7 @@ export function DianosesCard(content: any, showSaveButton: boolean) {
       >
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            <Chip color="primary" label={`${Issue.Accuracy}%`} /> {Issue.Name}{' '}
+            <Chip color="primary" label={`${parseInt(Issue.Accuracy)}%`} /> {Issue.Name}{' '}
           </Typography>
           <Typography component="p">{Issue.IcdName}</Typography>
         </CardContent>

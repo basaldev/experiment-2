@@ -11,7 +11,7 @@ import {
   Avatar,
   Typography,
 } from '@material-ui/core';
-import Add from '@material-ui/icons/Add';
+import BackUp from '@material-ui/icons/Backup';
 import { onClickUploadDocument } from 'domain/middleware/user';
 import { css } from 'emotion';
 
@@ -23,6 +23,9 @@ export function FileCard(tile: any) {
           width: 100%;
         `}
       >
+      <Typography align="center" gutterBottom variant="body1">
+         Your Medical Profile
+        </Typography>
         <CardActionArea>
           <CardMedia
             className={css`
@@ -39,7 +42,7 @@ export function FileCard(tile: any) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Action
+            View Document
           </Button>
         </CardActions>
       </Card>
@@ -55,41 +58,32 @@ export function DocumentsView(props: any) {
         xs={12}
         className={css`
           position: relative;
-          padding-bottom: 32px;
           z-index: 999;
-          margin-bottom: 8px !important;
-          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+          padding: 16px;
+          border-bottom: 1px solid #efefef;
+          background: #fff;
         `}
       >
         <Avatar
           className={css`
-            height: 64px !important;
-            width: 64px !important;
+          && {
+            height: 64px;
+            width: 64px;
             margin: 64px auto 12px auto;
-            background-color: purple !important;
+          }
           `}
         >
-          {props.user.name[0]}
+          <img  className={css`
+          height: 100%;
+          text-align:center;
+        `}
+        src={props.user.avatar} />
         </Avatar>
         <Typography color="textPrimary" variant="h6" align="center">
           {props.user.name}
         </Typography>
-        <Typography color="textSecondary" variant="body2" align="center">
-          {props.user.age}yo
-        </Typography>
-      </Grid>
-      <Grid
-        className={css`
-          margin-bottom: 25px;
-        `}
-      >
-        <Typography variant="h6" align="center">
-          Your Medical Documents
-        </Typography>
-        <Typography variant="body1" color="default">
-          Upload documents for a more personalised diagonsis
-        </Typography>
+        <Button className={css` && { margin:0 auto; display:block; }`} onClick={onClickUploadDocument} variant="contained" color="primary" >Upload Documents</Button>
+
       </Grid>
       <Grid
         container
@@ -100,19 +94,11 @@ export function DocumentsView(props: any) {
           overflow-y: scroll;
         `}
       >
+      <Typography align="center" gutterBottom variant="body1">
+          Upload documents for a more personalised diagonsis.
+        </Typography>
         {props.documents.map(tile => FileCard(tile))}
       </Grid>
-      <Fab
-        onClick={onClickUploadDocument}
-        color="primary"
-        className={css`
-          position: absolute !important;
-          bottom: 64px;
-          right: 24px;
-        `}
-      >
-        <Add />
-      </Fab>
     </Grid>
   );
 }

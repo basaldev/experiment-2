@@ -9,6 +9,7 @@ export class ChatView extends React.Component {
     textInput: string;
     lexruntime: any;
     messages: Array<any>;
+    user: any;
   };
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ export class ChatView extends React.Component {
           `}
         >
           {this.props.messages.map(message => {
-            return Message(message.direction, message.showSpeaker, message.content, message.speaker);
+            return Message(message.direction, message.showSpeaker, message.content, message.speaker, this.props.user);
           })}
         </div>
         <MessageInput
