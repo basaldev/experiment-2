@@ -6,7 +6,6 @@ import { ChatView } from 'components/container/chat-view';
 import { DocumentsView } from 'components/container/documents-view';
 import { DianoseView } from 'components/container/dianose-view';
 import { ActionsView } from 'components/container/actions-view';
-
 import { navigate } from 'domain/middleware/router';
 import { css } from 'emotion';
 
