@@ -38,7 +38,7 @@ const defaultState: State = {
   allItems: [],
   filteredItems: [],
   messages: [  {
-    content: Bubble('Hi, How can I help you today?'),
+    content: Bubble('Hello, I am here to help! Can you tell me your symptoms?'),
     showSpeaker: true,
     direction: 'row',
     speaker: 'BOT'

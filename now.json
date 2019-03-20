@@ -4,7 +4,9 @@
     "enabled": true,
     "autoAlias": true
   },
-  "alias": [],
+  "alias": [
+    "https://giants-proto.now.sh"
+  ],
   "builds": [
     {
       "src": "package.json",

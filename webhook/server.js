@@ -24,6 +24,14 @@ const liveAccounts = [
  {
  username: 'i3L2K_GMAIL_COM_AUT', // ALEX
  password: 'o7E9KgQx24SyCc83F'
+ },
+ {
+  username: 'Ni73E_CLICK-MAIL_NET_AUT', //rand1
+  password: 'Qk87ExMz45YqGt62R'
+ },
+ {
+  username: 'y4RMr_VIRTUAL-EMAIL_COM_AUT',  //rand2
+  password: 'Xp68MnRy7m9PKs32L'
  }
 ];
 const { username, password } = sample(liveAccounts);

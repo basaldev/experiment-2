@@ -10,7 +10,10 @@ function NoData(dianosis: Array<any>){
     <Grid item >
     <Grid container>
     <Typography gutterBottom variant="h5" component="h2" align="center">
-                No Dianosis yet
+                You haven't save a diagnoses yet.
+    </Typography>
+    <Typography align="center">
+               Go to chat, and tell me your symptoms
     </Typography>
     </Grid>
     </Grid>
