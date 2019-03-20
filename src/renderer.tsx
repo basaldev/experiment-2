@@ -20,8 +20,8 @@ export default async function render() {
 
 declare const module: {
   hot: {
-    accept: (string, Function) => void
-  }
+    accept: (string, Function) => void;
+  };
 };
 
 if (module.hot) {

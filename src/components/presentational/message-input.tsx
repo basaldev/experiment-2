@@ -10,48 +10,59 @@ export class MessageInput extends React.Component {
     textInput: string;
     lexruntime: any;
     scrollContainer: any;
-  }
+  };
   state: {
     inputRef: any;
-  }
+  };
   constructor(props) {
     super(props);
     this.state = {
-      inputRef: null
+      inputRef: null,
     };
   }
   render() {
     return (
-        <Grid container direction="row" justify="space-between" className={css`
-       border-top: 1px solid #efefef;
-      `}>
-          <Grid item xs={10}>
-            <InputBase className={css`
-            && {
-          padding: 8px;
-          width: 100%;
-          line-height: 30px;
-            }
-        `} onKeyUp={(e) => {
-                this.setState({ inputRef: onKeyPressUpdateInputText(e) });
-              }} placeholder="Send a message" />
-          </Grid>
-          <Grid item>
-            <IconButton className={css`height:100%;`}color="primary" onClick={() => {
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        className={css`
+          border-top: 1px solid #efefef;
+        `}
+      >
+        <Grid item xs={10}>
+          <InputBase
+            className={css`
+              && {
+                padding: 8px;
+                width: 100%;
+                line-height: 30px;
+              }
+            `}
+            onKeyUp={e => {
+              this.setState({ inputRef: onKeyPressUpdateInputText(e) });
+            }}
+            placeholder="Send a message"
+          />
+        </Grid>
+        <Grid item>
+          <IconButton
+            className={css`
+              height: 100%;
+            `}
+            color="primary"
+            onClick={() => {
               if (this.props.textInput !== '') {
-                pushChat(
-                  this.props.textInput,
-                  this.props.lexruntime,
-                  this.props.sessionAttributes,
-                );
+                pushChat(this.props.textInput, this.props.lexruntime, this.props.sessionAttributes);
                 updateInputText('');
                 this.state.inputRef.value = '';
               }
-            }}>
-              <SendIcon />
-            </IconButton>
-          </Grid>
+            }}
+          >
+            <SendIcon />
+          </IconButton>
         </Grid>
-    )
+      </Grid>
+    );
   }
 }

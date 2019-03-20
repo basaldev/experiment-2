@@ -9,4 +9,4 @@ export function normaliseDocuments(document) {
     url: document.url,
     cols: 3,
   };
-};
+}

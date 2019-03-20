@@ -8,7 +8,15 @@
  */
 
 import { getLogger } from 'domain/logger';
-import { updateChat, updateCurrentUser, updateMyDoctor, updateInputText, updateSnackbarContent, updateDiagnosis, updateSnackbarVisible } from 'domain/store/reducers/main';
+import {
+  updateChat,
+  updateCurrentUser,
+  updateMyDoctor,
+  updateInputText,
+  updateSnackbarContent,
+  updateDiagnosis,
+  updateSnackbarVisible,
+} from 'domain/store/reducers/main';
 import { getDoctors, getUser } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/dianoses-card';
 import { Bubble } from 'components/presentational/bubble';
@@ -25,7 +33,7 @@ export function saveDoctor(doctor: object) {
 
 function normalizeBotResponse(message: string) {
   try {
-    const result = JSON.parse(message)
+    const result = JSON.parse(message);
     return result;
   } catch (error) {
     return message;
@@ -37,8 +45,8 @@ export function saveDianoses(issue: object) {
   const doctor = getDoctors()[0];
   const newDiagnosis = {
     issue,
-    doctor
-  }
+    doctor,
+  };
   updateDiagnosis(newDiagnosis);
 }
 
@@ -47,44 +55,43 @@ export function showResponse(botResponse) {
   // debugger
   const result = normalizeBotResponse(botResponse.result.fulfillment.speech);
 
-  if(typeof result === 'object'){
+  if (typeof result === 'object') {
     updateChat({
       content: Bubble(`Here are some possible diagnosis`),
       showSpeaker: true,
       direction: 'row',
-      speaker: 'BOT'
+      speaker: 'BOT',
     });
     updateChat({
       content: DianosesCard(result, true),
       showSpeaker: false,
       direction: 'row',
-      speaker: 'BOT'
+      speaker: 'BOT',
     });
   } else {
     updateChat({
       content: Bubble(botResponse.result.fulfillment.speech),
       showSpeaker: true,
       direction: 'row',
-      speaker: 'BOT'
+      speaker: 'BOT',
     });
   }
 }
-
 
 export function pushChat(textString, lexruntime, sessionAttributes) {
   updateChat({
     content: Bubble(textString),
     showSpeaker: true,
     direction: 'row-reverse',
-    speaker: 'USER'
+    speaker: 'USER',
   });
   postMessage(textString).then(resp => {
     showResponse(resp);
-  })
+  });
 }
 
 export function onKeyPressUpdateInputText(e) {
-  updateInputText(e.target.value)
+  updateInputText(e.target.value);
   return e.target;
 }
 
@@ -114,14 +121,14 @@ export function onClickUploadDocument(event) {
             mimetype,
             url,
             name: filename,
-            userId: id
+            userId: id,
           })
-          .then((docRef) => {
+          .then(docRef => {
             getImages();
             updateSnackbarContent('Document scanned and saved to Database');
             updateSnackbarVisible(true);
           })
-          .catch((error) => {
+          .catch(error => {
             console.log('Couldnt add doc: ', error);
           });
       },

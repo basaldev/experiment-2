@@ -45,7 +45,7 @@ function homeRouter(onRoute: OnRoute) {
 
 export default function startRouters() {
   loginRouter(ctx => {
-    logger.debug('Home route');
+    logger.debug('Login route');
     updateCurrentPage({ name: 'LOGIN_PAGE', value: null });
   });
   homeRouter(ctx => {
@@ -58,17 +58,17 @@ export default function startRouters() {
     updateCurrentPage({ name: 'SECOND_PAGE', value: 1 });
   });
   thirdRouter(ctx => {
-    logger.debug('Document route');
+    logger.debug('Diagnosis route');
     updateCurrentPage({ name: 'THIRD_PAGE', value: 2 });
   });
   fourthRouter(ctx => {
-    logger.debug('Document route');
+    logger.debug('Treatmean route');
     updateCurrentPage({ name: 'FOURTH_PAGE', value: 3 });
   });
   page();
 }
 
-export function navigate(route:string, event:any){
+export function navigate(route: string, event: any) {
   event.preventDefault();
-  page(route)
+  page(route);
 }

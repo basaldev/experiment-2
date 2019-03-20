@@ -10,11 +10,11 @@
 import { createAtom } from 'js-atom';
 import { Bubble } from 'components/presentational/bubble';
 
-export type HomePage = { name: 'HOME_PAGE', value: 0 };
-export type SecondPage = { name: 'SECOND_PAGE', value: 1 };
-export type ThirdPage = { name: 'THIRD_PAGE', value: 2 };
-export type FourthPage = { name: 'FOURTH_PAGE', value: 3 };
-export type LoginPage = { name: 'LOGIN_PAGE', value: null };
+export type HomePage = { name: 'HOME_PAGE'; value: 0 };
+export type SecondPage = { name: 'SECOND_PAGE'; value: 1 };
+export type ThirdPage = { name: 'THIRD_PAGE'; value: 2 };
+export type FourthPage = { name: 'FOURTH_PAGE'; value: 3 };
+export type LoginPage = { name: 'LOGIN_PAGE'; value: null };
 
 export type Page = HomePage | SecondPage | ThirdPage | FourthPage | LoginPage;
 
@@ -30,7 +30,7 @@ export type State = {
   doctors: Array<any>;
   myDoctors: Array<any>;
   loading: boolean;
-  inputText:string;
+  inputText: string;
   sessionAttributes: any;
   user: {
     id: string;
@@ -40,12 +40,12 @@ export type State = {
     id: string;
     avatar: string;
     age: number;
-  }>
+  }>;
 };
 
 const defaultState: State = {
   user: {
-    id: null
+    id: null,
   },
   sampleUsers: [
     {
@@ -64,36 +64,40 @@ const defaultState: State = {
   currentPage: { name: 'HOME_PAGE', value: 0 },
   allItems: [],
   filteredItems: [],
-  messages: [  {
-    content: Bubble('Hello, I am here to help! Can you tell me your symptoms?'),
-    showSpeaker: true,
-    direction: 'row',
-    speaker: 'BOT'
-  }],
+  messages: [
+    {
+      content: Bubble('Hello, I am here to help! Can you tell me your symptoms?'),
+      showSpeaker: true,
+      direction: 'row',
+      speaker: 'BOT',
+    },
+  ],
   inputText: '',
   documents: [],
   dianosis: [],
   myDoctors: [],
-  doctors: [{
-    img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
-    name: 'Joseph Lister',
-    specialisationId: 31,
-    covered: true
-  },
-  {
-    img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
-    name: 'Henry Gray',
-    specialisationId: 95,
-    covered: false
-  },
-  {
-    img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
-    name: 'Jonas Salk',
-    specialisationId: 15,
-    covered: false
-  }],
+  doctors: [
+    {
+      img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
+      name: 'Joseph Lister',
+      specialisationId: 31,
+      covered: true,
+    },
+    {
+      img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
+      name: 'Henry Gray',
+      specialisationId: 95,
+      covered: false,
+    },
+    {
+      img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
+      name: 'Jonas Salk',
+      specialisationId: 15,
+      covered: false,
+    },
+  ],
   loading: true,
-  sessionAttributes: {}
+  sessionAttributes: {},
 };
 
 export const store = createAtom(defaultState);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BottomNavigation, BottomNavigationAction }  from '@material-ui/core';
+import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FolderShared from '@material-ui/icons/FolderShared';
 import Assignment from '@material-ui/icons/Assignment';
@@ -10,16 +10,13 @@ import FavoriteIcon from '@material-ui/icons/AssignmentLate';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 import { css } from 'emotion';
-export function Navbar(props: any){
+export function Navbar(props: any) {
   return (
-    <BottomNavigation
-        value={props.value}
-        showLabels
-      >
-        <BottomNavigationAction onClick={props.routes[0]} label="Chat" icon={<ChatIcon />} />
-        <BottomNavigationAction onClick={props.routes[1]} label="Profile" icon={<Assignment />} />
-        <BottomNavigationAction onClick={props.routes[2]} label="Dianose" icon={<AssignmentLate />} />
-        <BottomNavigationAction onClick={props.routes[3]} label="Treament" icon={<AssignmentInd />} />
-      </BottomNavigation>
-  )
+    <BottomNavigation value={props.value} showLabels>
+      <BottomNavigationAction onClick={props.routes[0]} label="Chat" icon={<ChatIcon />} />
+      <BottomNavigationAction onClick={props.routes[1]} label="Profile" icon={<Assignment />} />
+      <BottomNavigationAction onClick={props.routes[2]} label="Dianose" icon={<AssignmentLate />} />
+      <BottomNavigationAction onClick={props.routes[3]} label="Treament" icon={<AssignmentInd />} />
+    </BottomNavigation>
+  );
 }

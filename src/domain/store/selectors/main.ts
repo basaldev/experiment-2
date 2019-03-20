@@ -37,6 +37,6 @@ export function getUser(): { id: string } {
   return state().user;
 }
 
-export function getSampleUsers(): Array<{id: string, name: string, avatar: string, age: number }> {
+export function getSampleUsers(): Array<{ id: string; name: string; avatar: string; age: number }> {
   return state().sampleUsers;
 }

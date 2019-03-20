@@ -1,3 +1,3 @@
 export const colors = {
-  botAvatar: "#e84425"
-}
+  botAvatar: '#e84425',
+};
