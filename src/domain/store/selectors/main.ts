@@ -1,5 +1,5 @@
 import { store } from 'domain/store/main';
-import { State, Item, Page } from 'domain/store/main';
+import { State, Page } from 'domain/store/main';
 
 export function state(): State {
   return store.deref();
@@ -8,6 +8,7 @@ export function state(): State {
 export function currentPage(): Page {
   return state().currentPage;
 }
+
 export function getMessages(): Array<any> {
   return state().messages;
 }
@@ -15,6 +16,7 @@ export function getMessages(): Array<any> {
 export function getInputText(): string {
   return state().inputText;
 }
+
 export function getSessionAttributes(): any {
   return state().sessionAttributes;
 }
@@ -22,6 +24,7 @@ export function getSessionAttributes(): any {
 export function getDocuments(): Array<any> {
   return state().documents;
 }
+
 export function getDianosis(): Array<any> {
   return state().dianosis;
 }
@@ -29,6 +32,7 @@ export function getDianosis(): Array<any> {
 export function getDoctors(): Array<any> {
   return state().doctors;
 }
+
 export function getMyDoctors(): Array<any> {
   return state().myDoctors;
 }

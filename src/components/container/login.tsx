@@ -5,10 +5,9 @@ import { onChangeCurrentUser } from 'domain/middleware/user';
 
 function SampleUser({ user }) {
   return (
-    <Grid item xs={12} key={user.name} style={{ backgroundColor: 'salmon' }}>
+    <Grid item xs={12} key={user.name}>
       <Grid
         container
-        // alignItems="center"
         className={css`
           margin-bottom: 16px;
         `}

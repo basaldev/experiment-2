@@ -1,16 +1,5 @@
 import * as React from 'react';
-import {
-  Grid,
-  GridList,
-  Button,
-  GridListTile,
-  CardContent,
-  Card,
-  CardActions,
-  Typography,
-  CardActionArea,
-  CardMedia,
-} from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { css } from 'emotion';
 import { DoctorCard } from 'components/presentational/doctor-card';
 import { DianosesCard } from 'components/presentational/diagnoses-card';
@@ -21,7 +10,7 @@ function NoData(dianosis: Array<any>) {
       <Grid item>
         <Grid container>
           <Typography gutterBottom variant="h5" component="h2" align="center">
-            You haven't save a diagnoses yet.
+            You haven’t saved a diagnosis yet.
           </Typography>
           <Typography align="center">Go to chat, and tell me your symptoms</Typography>
         </Grid>
@@ -31,6 +20,7 @@ function NoData(dianosis: Array<any>) {
 }
 
 export function DianoseView(props: any) {
+  console.log('dianosis:', props.dianosis);
   return (
     <Grid
       container
@@ -46,12 +36,16 @@ export function DianoseView(props: any) {
       <Grid item>
         {props.dianosis.map(tile => {
           return (
-            <>
-            <Typography gutterBottom variant="h5" component="h2" align="center">Your Prediagnosis</Typography>
+            <div key={tile.id}>
+              <Typography gutterBottom variant="h5" component="h2" align="center">
+                Your Pre-diagnosis
+              </Typography>
               {DianosesCard([{ Issue: tile.issue }], false)}
-              <Typography variant="body1" component="p" align="center">Your Prediagnosis</Typography>
+              <Typography variant="body1" component="p" align="center">
+                Doctors who can help you
+              </Typography>
               {DoctorCard(tile.doctor, false)}
-            </>
+            </div>
           );
         })}
       </Grid>

@@ -9,7 +9,7 @@ export function DianosesCard(content: any, showSaveButton: boolean) {
     const Action = showSaveButton ? (
       <CardActions>
         <Button size="small" color="primary" onClick={() => saveDianoses(Issue)}>
-          Save pre-dianoses
+          Save pre-diagnosis
         </Button>
       </CardActions>
     ) : null;

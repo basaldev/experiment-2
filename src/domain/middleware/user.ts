@@ -15,6 +15,8 @@ import { postMessage, getImages } from 'domain/middleware/network';
 import { firestore } from 'domain/firebase';
 import * as filestack from 'filestack-js';
 import page from 'page';
+import { v4 as uuid } from 'uuid';
+
 const logger = getLogger('Middleware/user');
 
 export function saveDoctor(doctor: object) {
@@ -35,15 +37,15 @@ export function saveDianoses(issue: object) {
   //find doctor
   const doctor = getDoctors()[0];
   const newDiagnosis = {
+    id: uuid(),
     issue,
     doctor
   };
   updateDiagnosis(newDiagnosis);
+  page('/3');
 }
 
-//create react app
 export function showResponse(botResponse) {
-  // debugger
   const result = normalizeBotResponse(botResponse.result.fulfillment.speech);
 
   if (typeof result === 'object') {

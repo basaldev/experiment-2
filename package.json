@@ -41,7 +41,8 @@
     "page": "^1.7.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-lex": "^1.2.1"
+    "react-lex": "^1.2.1",
+    "uuid": "^3.3.2"
   },
   "lint-staged": {
     "{src/**/*.{ts,tsx}": [
