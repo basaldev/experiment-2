@@ -1,12 +1,3 @@
-/*
- * Exodev React kit
- *
- * Copyright © 2016 Exodev, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { getLogger } from 'domain/logger';
 import {
   updateChat,
@@ -15,7 +6,7 @@ import {
   updateInputText,
   updateSnackbarContent,
   updateDiagnosis,
-  updateSnackbarVisible,
+  updateSnackbarVisible
 } from 'domain/store/reducers/main';
 import { getDoctors, getUser } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/diagnoses-card';
@@ -45,7 +36,7 @@ export function saveDianoses(issue: object) {
   const doctor = getDoctors()[0];
   const newDiagnosis = {
     issue,
-    doctor,
+    doctor
   };
   updateDiagnosis(newDiagnosis);
 }
@@ -57,23 +48,23 @@ export function showResponse(botResponse) {
 
   if (typeof result === 'object') {
     updateChat({
-      content: Bubble(`Here are some possible diagnosis`),
+      content: Bubble(`Here are some possible diagnoses:`),
       showSpeaker: true,
       direction: 'row',
-      speaker: 'BOT',
+      speaker: 'BOT'
     });
     updateChat({
       content: DianosesCard(result, true),
       showSpeaker: false,
       direction: 'row',
-      speaker: 'BOT',
+      speaker: 'BOT'
     });
   } else {
     updateChat({
       content: Bubble(botResponse.result.fulfillment.speech),
       showSpeaker: true,
       direction: 'row',
-      speaker: 'BOT',
+      speaker: 'BOT'
     });
   }
 }
@@ -83,7 +74,7 @@ export function pushChat(textString, lexruntime, sessionAttributes) {
     content: Bubble(textString),
     showSpeaker: true,
     direction: 'row-reverse',
-    speaker: 'USER',
+    speaker: 'USER'
   });
   postMessage(textString).then(resp => {
     showResponse(resp);
@@ -109,7 +100,7 @@ export function onClickUploadDocument(event) {
       storeTo: {
         container: 'devportal-customers-assets',
         path: 'user-uploads/',
-        region: 'us-east-1',
+        region: 'us-east-1'
       },
       onUploadDone: (res: any) => {
         const { id } = getUser();
@@ -121,7 +112,7 @@ export function onClickUploadDocument(event) {
             mimetype,
             url,
             name: filename,
-            userId: id,
+            userId: id
           })
           .then(docRef => {
             getImages();
@@ -129,9 +120,9 @@ export function onClickUploadDocument(event) {
             updateSnackbarVisible(true);
           })
           .catch(error => {
-            console.log('Couldnt add doc: ', error);
+            console.log('Couldn’t add doc: ', error);
           });
-      },
+      }
     })
     .open();
 }

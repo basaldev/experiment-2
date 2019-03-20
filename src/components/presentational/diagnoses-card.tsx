@@ -1,20 +1,5 @@
 import React from 'react';
-import {
-  Grid,
-  Chip,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Button,
-  GridListTile,
-  CardContent,
-  Card,
-  CardActions,
-  Typography,
-  CardActionArea,
-  CardMedia,
-} from '@material-ui/core';
+import { Chip, Button, CardContent, Card, CardActions, Typography } from '@material-ui/core';
 import { saveDianoses } from 'domain/middleware/user';
 import { css } from 'emotion';
 
@@ -38,7 +23,7 @@ export function DianosesCard(content: any, showSaveButton: boolean) {
       >
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            <Chip color="primary" label={`${Issue.Accuracy}%`} /> {Issue.Name}{' '}
+            <Chip color="primary" label={`${Math.round(Issue.Accuracy)}%`} /> {Issue.Name}{' '}
           </Typography>
           <Typography component="p">{Issue.IcdName}</Typography>
         </CardContent>

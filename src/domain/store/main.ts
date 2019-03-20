@@ -1,12 +1,3 @@
-/*
- * Exodev React kit
- *
- * Copyright © 2016 Exodev, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { createAtom } from 'js-atom';
 import { Bubble } from 'components/presentational/bubble';
 
@@ -45,32 +36,38 @@ export type State = {
 
 const defaultState: State = {
   user: {
-    id: null,
+    id: null
   },
   sampleUsers: [
     {
-      name: 'user one',
+      name: 'User 1 - Patient Bob',
       id: 'xd0ktRwSbthgZJOMKxBn44potD52',
       avatar: '',
-      age: 21,
+      age: 21
     },
     {
-      name: 'user two',
+      name: 'User 2 - Patient Sally',
+      id: 'abcd1234',
+      avatar: '',
+      age: 24
+    },
+    {
+      name: 'User 3 - Doctor John',
       id: 'y48Udj8T5Pf7r402LX2qYqNUYmz2',
       avatar: '',
-      age: 59,
-    },
+      age: 59
+    }
   ],
   currentPage: { name: 'HOME_PAGE', value: 0 },
   allItems: [],
   filteredItems: [],
   messages: [
     {
-      content: Bubble('Hello, I am here to help! Can you tell me your symptoms?'),
+      content: Bubble('Hello, I am here to help! Please let me know what your symptoms are...'),
       showSpeaker: true,
       direction: 'row',
-      speaker: 'BOT',
-    },
+      speaker: 'BOT'
+    }
   ],
   inputText: '',
   documents: [],
@@ -81,23 +78,23 @@ const defaultState: State = {
       img: `https://images.unsplash.com/photo-1523350774557-359d2ca68f2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
       name: 'Joseph Lister',
       specialisationId: 31,
-      covered: true,
+      covered: true
     },
     {
       img: `https://images.unsplash.com/photo-1543165365-07232ed12fad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80`,
       name: 'Henry Gray',
       specialisationId: 95,
-      covered: false,
+      covered: false
     },
     {
       img: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80`,
       name: 'Jonas Salk',
       specialisationId: 15,
-      covered: false,
-    },
+      covered: false
+    }
   ],
   loading: true,
-  sessionAttributes: {},
+  sessionAttributes: {}
 };
 
 export const store = createAtom(defaultState);

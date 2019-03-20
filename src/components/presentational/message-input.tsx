@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, InputBase, Paper, IconButton } from '@material-ui/core';
+import { Grid, InputBase, IconButton } from '@material-ui/core';
 import { css } from 'emotion';
 import { updateInputText } from 'domain/store/reducers/main'; //TODO move to user middleware;
 import SendIcon from '@material-ui/icons/Send';
@@ -18,7 +18,7 @@ export class MessageInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputRef: null,
+      inputRef: null
     };
   }
   render() {

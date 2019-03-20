@@ -1,21 +1,5 @@
 import * as React from 'react';
-import {
-  Grid,
-  Chip,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Button,
-  GridListTile,
-  CardContent,
-  Card,
-  CardActions,
-  Typography,
-  CardActionArea,
-  CardMedia,
-} from '@material-ui/core';
-import TickIcon from '@material-ui/icons/Check';
+import { Grid } from '@material-ui/core';
 import { css } from 'emotion';
 import { DoctorCard } from 'components/presentational/doctor-card';
 export function ActionsView(props: any) {

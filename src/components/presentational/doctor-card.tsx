@@ -12,7 +12,7 @@ import {
   CardActions,
   Typography,
   CardActionArea,
-  CardMedia,
+  CardMedia
 } from '@material-ui/core';
 import TickIcon from '@material-ui/icons/Check';
 import { css } from 'emotion';
@@ -51,10 +51,10 @@ export function DoctorCard(tile: any, expanded: boolean) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {tile.name} <Chip color="primary" label="Covered by Issurance" icon={<TickIcon />} />
+          {tile.name} <Chip color="primary" label="Covered by Insurance" icon={<TickIcon />} />
         </Typography>
         <Typography component="p">
-          During our last vist I prescripted Medicine A and B for your back pain, <strong>daily for 3 weeks</strong>
+          During our last vist I prescribed Medicine A and B for your back pain, <strong>daily for 3 weeks</strong>
         </Typography>
       </CardContent>
       {expandedContent}

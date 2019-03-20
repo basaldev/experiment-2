@@ -5,37 +5,33 @@ import { onChangeCurrentUser } from 'domain/middleware/user';
 
 function SampleUser({ user }) {
   return (
-    <Grid item xs={12} key={user.name}>
+    <Grid item xs={12} key={user.name} style={{ backgroundColor: 'salmon' }}>
       <Grid
         container
-        alignItems="center"
+        // alignItems="center"
         className={css`
           margin-bottom: 16px;
         `}
       >
-      <Grid item>
-        <Avatar>{user.name[0]}</Avatar>
+        <Grid item>
+          <Avatar>{user.name[0]}</Avatar>
         </Grid>
-        <Grid item xs={12} alignContent="center">
-        <Button
-          onClick={() => onChangeCurrentUser(user)}
-          className={css`
-            margin-left: 8px !important;
-          `}
-        >
-          {user.name}
-        </Button>
+        <Grid item>
+          <Button
+            onClick={() => onChangeCurrentUser(user)}
+            className={css`
+              margin-left: 8px !important;
+            `}
+          >
+            {user.name}
+          </Button>
         </Grid>
       </Grid>
     </Grid>
   );
 }
 
-export const Login = ({
-  sampleUsers,
-}: {
-  sampleUsers: Array<{ id: string; name: string; avatar: string; age: number }>;
-}) => {
+export const Login = ({ sampleUsers }: { sampleUsers: Array<{ id: string; name: string; avatar: string; age: number }> }) => {
   return (
     <Grid container justify="center" alignItems="center" alignContent="center">
       <Grid

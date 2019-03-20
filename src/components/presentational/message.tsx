@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Avatar } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Speaker } from 'components/presentational/speaker';
 import Favorite from '@material-ui/icons/Favorite';
 import { css } from 'emotion';
