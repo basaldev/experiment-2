@@ -17,7 +17,12 @@ const logger = getLogger('Renderer');
 
 export default async function render() {
   const App = (await import('components/container/app')).App;
-  ReactDOM.render(<MuiThemeProvider theme={theme}><App /></MuiThemeProvider>, document.getElementById('app'));
+  ReactDOM.render(
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>,
+    document.getElementById('app')
+  );
 }
 
 declare const module: {

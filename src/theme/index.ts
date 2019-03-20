@@ -33,7 +33,7 @@ const palette = {
   },
   background: {
     default: '#fafafa',
-    paper: '#333'
+    paper: '#ffffff',
   },
   action: {
     active: 'rgba(0, 0, 0, 0.54)',
@@ -105,7 +105,7 @@ export const themeOptions: ThemeOptions = {
     },
     MuiCardContent: {
       root: {
-        padding: `${gutters.xs} !important`
+        padding: `${gutters.xs} !important`,
       },
     },
     MuiListItemText: {
@@ -209,6 +209,5 @@ export const themeOptions: ThemeOptions = {
     },
   },
 };
-
 
 export const theme = createMuiTheme(themeOptions);

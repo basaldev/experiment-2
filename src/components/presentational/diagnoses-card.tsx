@@ -18,13 +18,8 @@ import {
 import { saveDianoses } from 'domain/middleware/user';
 import { css } from 'emotion';
 
-<<<<<<< HEAD:src/components/presentational/diagnoses-card.tsx
-export function DiagnosesCard(content: any, showSaveButton: boolean) {
-  const issues = content.map((tile) => {
-=======
 export function DianosesCard(content: any, showSaveButton: boolean) {
   const issues = content.map(tile => {
->>>>>>> 88c752fa76f7c66ffc6df38e4e53de56f1d4188f:src/components/presentational/dianoses-card.tsx
     const { Issue } = tile;
     const Action = showSaveButton ? (
       <CardActions>

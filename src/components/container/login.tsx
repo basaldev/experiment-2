@@ -13,13 +13,10 @@ function SampleUser({ user }) {
           margin-bottom: 16px;
         `}
       >
-        <Avatar
-          className={css`
-            background: deeppink;
-          `}
-        >
-          {user.name[0]}
-        </Avatar>
+      <Grid item>
+        <Avatar>{user.name[0]}</Avatar>
+        </Grid>
+        <Grid item xs={12} alignContent="center">
         <Button
           onClick={() => onChangeCurrentUser(user)}
           className={css`
@@ -28,6 +25,7 @@ function SampleUser({ user }) {
         >
           {user.name}
         </Button>
+        </Grid>
       </Grid>
     </Grid>
   );

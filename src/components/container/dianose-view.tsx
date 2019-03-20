@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { css } from 'emotion';
 import { DoctorCard } from 'components/presentational/doctor-card';
-import { DianosesCard } from 'components/presentational/dianoses-card';
+import { DianosesCard } from 'components/presentational/diagnoses-card';
 
 function NoData(dianosis: Array<any>) {
   if (dianosis.length === 0) {
@@ -47,7 +47,9 @@ export function DianoseView(props: any) {
         {props.dianosis.map(tile => {
           return (
             <>
+            <Typography gutterBottom variant="h5" component="h2" align="center">Your Prediagnosis</Typography>
               {DianosesCard([{ Issue: tile.issue }], false)}
+              <Typography variant="body1" component="p" align="center">Your Prediagnosis</Typography>
               {DoctorCard(tile.doctor, false)}
             </>
           );

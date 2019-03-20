@@ -10,12 +10,8 @@ export class MessageInput extends React.Component {
     textInput: string;
     lexruntime: any;
     scrollContainer: any;
-<<<<<<< HEAD
     className?: any;
-  }
-=======
   };
->>>>>>> 88c752fa76f7c66ffc6df38e4e53de56f1d4188f
   state: {
     inputRef: any;
   };

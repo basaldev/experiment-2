@@ -31,16 +31,12 @@ export class ChatView extends React.Component {
             return Message(message.direction, message.showSpeaker, message.content, message.speaker);
           })}
         </div>
-<<<<<<< HEAD
-        <MessageInput className={css`margin: 0 8px;`} scrollContainer={this.refs.scrollContainer} sessionAttributes={this.props.sessionAttributes} textInput={this.props.textInput} lexruntime={this.props.lexruntime} />
-=======
         <MessageInput
           scrollContainer={this.refs.scrollContainer}
           sessionAttributes={this.props.sessionAttributes}
           textInput={this.props.textInput}
           lexruntime={this.props.lexruntime}
         />
->>>>>>> 88c752fa76f7c66ffc6df38e4e53de56f1d4188f
       </div>
     );
   }

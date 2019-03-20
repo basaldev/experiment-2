@@ -8,11 +8,6 @@
  */
 
 import { getLogger } from 'domain/logger';
-<<<<<<< HEAD
-import { updateChat, updateMyDoctor, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
-import { getDoctors } from 'domain/store/selectors/main';
-import { DiagnosesCard } from 'components/presentational/diagnoses-card';
-=======
 import {
   updateChat,
   updateCurrentUser,
@@ -23,8 +18,7 @@ import {
   updateSnackbarVisible,
 } from 'domain/store/reducers/main';
 import { getDoctors, getUser } from 'domain/store/selectors/main';
-import { DianosesCard } from 'components/presentational/dianoses-card';
->>>>>>> 88c752fa76f7c66ffc6df38e4e53de56f1d4188f
+import { DianosesCard } from 'components/presentational/diagnoses-card';
 import { Bubble } from 'components/presentational/bubble';
 import { postMessage, getImages } from 'domain/middleware/network';
 import { firestore } from 'domain/firebase';
@@ -69,7 +63,7 @@ export function showResponse(botResponse) {
       speaker: 'BOT',
     });
     updateChat({
-      content: DiagnosesCard(result, true),
+      content: DianosesCard(result, true),
       showSpeaker: false,
       direction: 'row',
       speaker: 'BOT',
