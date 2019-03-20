@@ -5,7 +5,25 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: '/',
-    filename: "bundle.js" },
+    filename: "bundle.js"
+  },
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'build'),
+    hot: true,
+    overlay: {
+      errors: false,
+    },
+    open: true,
+    inline: true,
+    host: 'localhost',
+    publicPath: `/`,
+    stats: 'errors-only',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  },
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
