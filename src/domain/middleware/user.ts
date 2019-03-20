@@ -8,11 +8,13 @@
  */
 
 import { getLogger } from 'domain/logger';
-import { updateChat, updateMyDoctor, updateInputText, updatesessionAttributes, updateDiagnosis } from 'domain/store/reducers/main';
-import { getDoctors } from 'domain/store/selectors/main';
+import { updateChat, updateCurrentUser, updateMyDoctor, updateInputText, updateSnackbarContent, updateDiagnosis, updateSnackbarVisible } from 'domain/store/reducers/main';
+import { getDoctors, getUser } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/dianoses-card';
 import { Bubble } from 'components/presentational/bubble';
-import { postMessage } from 'domain/middleware/network';
+import { postMessage, getImages } from 'domain/middleware/network';
+import { firestore } from 'domain/firebase';
+import * as filestack from 'filestack-js';
 import page from 'page';
 const logger = getLogger('Middleware/user');
 
@@ -88,4 +90,51 @@ export function onKeyPressUpdateInputText(e) {
 
 export function scrollbottom(container) {
   container.scrollTop = container.scrollHeight;
+}
+
+export function onClickUploadDocument(event) {
+  const client = filestack.init('AWc0bpovCRWqA1MDqiKU1z');
+  client
+    .picker({
+      maxFiles: 20,
+      uploadInBackground: false,
+      onOpen: () => console.log('opened'),
+      storeTo: {
+        container: 'devportal-customers-assets',
+        path: 'user-uploads/',
+        region: 'us-east-1',
+      },
+      onUploadDone: (res: any) => {
+        const { id } = getUser();
+        const { mimetype, url, handle, filename } = res.filesUploaded[0];
+        firestore
+          .collection('userDocuments')
+          .add({
+            filestackId: handle,
+            mimetype,
+            url,
+            name: filename,
+            userId: id
+          })
+          .then((docRef) => {
+            getImages();
+            updateSnackbarContent('Document scanned and saved to Database');
+            updateSnackbarVisible(true);
+          })
+          .catch((error) => {
+            console.log('Couldnt add doc: ', error);
+          });
+      },
+    })
+    .open();
+}
+
+export function onCloseSnackbar() {
+  updateSnackbarVisible(false);
+}
+
+export function onChangeCurrentUser(user) {
+  console.log(user);
+  updateCurrentUser(user);
+  page('/');
 }

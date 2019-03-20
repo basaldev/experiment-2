@@ -9,6 +9,7 @@
 
 import { getLogger } from 'domain/logger';
 import { store, State, Page, Item } from 'domain/store/main';
+import { normaliseDocuments } from 'domain/normalisers';
 
 const logger = getLogger('State');
 
@@ -53,4 +54,33 @@ export function updateMyDoctor(newDoctor:any) {
     ...oldState.myDoctors,
     newDoctor
   ]}));
+}
+
+export function updateCurrentUser(user: { id: string, name: string, avatar: string, age: number }) {
+  return store.swap(oldState => ({
+    ...oldState,
+    user
+  }));
+}
+
+export function updateUserDocuments(userDocuments): State  {
+  logger.info('Adding documents');
+  return store.swap(oldState => ({
+    ...oldState,
+    documents: userDocuments.map(normaliseDocuments),
+  }));
+}
+
+export function updateSnackbarVisible(snackbarVisible): State  {
+  return store.swap(oldState => ({
+    ...oldState,
+    snackbarVisible,
+  }));
+}
+
+export function updateSnackbarContent(snackbarContent): State  {
+  return store.swap(oldState => ({
+    ...oldState,
+    snackbarContent,
+  }));
 }

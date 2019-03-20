@@ -1,50 +1,118 @@
 import * as React from 'react';
-import { Grid, GridList, Paper, GridListTile, GridListTileBar, IconButton }  from '@material-ui/core';
+import {
+  Grid,
+  Button,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Fab,
+  Avatar,
+  Typography,
+} from '@material-ui/core';
+import Add from '@material-ui/icons/Add';
+import { onClickUploadDocument } from 'domain/middleware/user';
 import { css } from 'emotion';
 
-
-export function FileCard(tile:any) {
+export function FileCard(tile: any) {
   return (
-  <GridListTile key={tile.img} cols={tile.cols || 1} className={css`
-            border-radius: 10px;
-          `}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton >
-                  I
-                </IconButton>
-              }
-            />
-      </GridListTile>
-  )
-}
-export function DataCard(tile:any){
-  return (
-    <GridListTile key={tile.img} cols={tile.cols || 1} className={css`
-    border-radius: 10px;
-  `}>
-  <Paper className={css` && { background: green; padding: 16px; text-align:center; }`}>
-    <Grid container direction="column" justify="center">
-      <Grid item alignContent="center">cholesterol</Grid>
-      <Grid item alignContent="center">10</Grid>
+    <Grid item xs={6} key={tile.url}>
+      <Card
+        className={css`
+          width: 100%;
+        `}
+      >
+        <CardActionArea>
+          <CardMedia
+            className={css`
+              height: 160px;
+            `}
+            image={tile.img}
+            title={tile.title}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="body1" component="h2">
+              {tile.title}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Action
+          </Button>
+        </CardActions>
+      </Card>
     </Grid>
-  </Paper>
-  </GridListTile>
-  )
+  );
 }
 
-export function DocumentsView(props:any) {
+export function DocumentsView(props: any) {
   return (
-    <Grid container direction="row">
-      <GridList cellHeight={160} className={css`
-        max-width: 100%;
-        height: 90vh;
-      `} cols={3}>
+    <Grid container justify="center">
+      <Grid
+        item
+        xs={12}
+        className={css`
+          position: relative;
+          padding-bottom: 32px;
+          z-index: 999;
+          margin-bottom: 8px !important;
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+            0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+        `}
+      >
+        <Avatar
+          className={css`
+            height: 64px !important;
+            width: 64px !important;
+            margin: 64px auto 12px auto;
+            background-color: purple !important;
+          `}
+        >
+          {props.user.name[0]}
+        </Avatar>
+        <Typography color="textPrimary" variant="h6" align="center">
+          {props.user.name}
+        </Typography>
+        <Typography color="textSecondary" variant="body2" align="center">
+          {props.user.age}yo
+        </Typography>
+      </Grid>
+      <Grid
+        className={css`
+          margin-bottom: 25px;
+        `}
+      >
+        <Typography variant="h6" align="center">
+          Your Medical Documents
+        </Typography>
+        <Typography variant="body1" color="default">
+          Upload documents for a more personalised diagonsis
+        </Typography>
+      </Grid>
+      <Grid
+        container
+        spacing={16}
+        className={css`
+          padding: 16px;
+          height: 52vh;
+          overflow-y: scroll;
+        `}
+      >
         {props.documents.map(tile => FileCard(tile))}
-      </GridList>
+      </Grid>
+      <Fab
+        onClick={onClickUploadDocument}
+        color="primary"
+        className={css`
+          position: absolute !important;
+          bottom: 64px;
+          right: 24px;
+        `}
+      >
+        <Add />
+      </Fab>
     </Grid>
-  )
+  );
 }

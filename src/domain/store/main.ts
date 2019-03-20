@@ -14,8 +14,9 @@ export type HomePage = { name: 'HOME_PAGE', value: 0 };
 export type SecondPage = { name: 'SECOND_PAGE', value: 1 };
 export type ThirdPage = { name: 'THIRD_PAGE', value: 2 };
 export type FourthPage = { name: 'FOURTH_PAGE', value: 3 };
+export type LoginPage = { name: 'LOGIN_PAGE', value: null };
 
-export type Page = HomePage | SecondPage | ThirdPage | FourthPage;
+export type Page = HomePage | SecondPage | ThirdPage | FourthPage | LoginPage;
 
 export type Item = { name: string; url: string };
 
@@ -31,9 +32,35 @@ export type State = {
   loading: boolean;
   inputText:string;
   sessionAttributes: any;
+  user: {
+    id: string;
+  };
+  sampleUsers: Array<{
+    name: string;
+    id: string;
+    avatar: string;
+    age: number;
+  }>
 };
 
 const defaultState: State = {
+  user: {
+    id: null
+  },
+  sampleUsers: [
+    {
+      name: 'user one',
+      id: 'xd0ktRwSbthgZJOMKxBn44potD52',
+      avatar: '',
+      age: 21,
+    },
+    {
+      name: 'user two',
+      id: 'y48Udj8T5Pf7r402LX2qYqNUYmz2',
+      avatar: '',
+      age: 59,
+    },
+  ],
   currentPage: { name: 'HOME_PAGE', value: 0 },
   allItems: [],
   filteredItems: [],
@@ -44,47 +71,7 @@ const defaultState: State = {
     speaker: 'BOT'
   }],
   inputText: '',
-  documents: [
-    {
-      type: 'data',
-      img: `https://picsum.photos/200/300/?random`,
-      title: 'Image',
-      cols: 3,
-    },
-    {
-      type: 'document',
-      img: `https://picsum.photos/500/200/?random`,
-      title: 'Image',
-      cols: 1,
-    },
-    {
-      type: 'document',
-      img: `https://picsum.photos/430/470/?random`,
-      title: 'Image',
-      cols: 2,
-    },
-    {
-      img: `https://picsum.photos/100/300/?random`,
-      title: 'Image',
-      cols: 3,
-    },
-    {
-      type: 'data',
-      img: `https://picsum.photos/900/200/?random`,
-      title: 'Image',
-      cols: 1,
-    },
-    {
-      img: `https://picsum.photos/450/454/?random`,
-      title: 'Image',
-      cols: 2,
-    },
-    {
-      img: `https://picsum.photos/450/454/?random`,
-      title: 'Image',
-      cols: 2,
-    },
-  ],
+  documents: [],
   dianosis: [],
   myDoctors: [],
   doctors: [{
@@ -110,3 +97,4 @@ const defaultState: State = {
 };
 
 export const store = createAtom(defaultState);
+window['__STORE__'] = store;

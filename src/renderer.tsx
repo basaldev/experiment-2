@@ -14,10 +14,8 @@ import { getLogger } from 'domain/logger';
 const logger = getLogger('Renderer');
 
 export default async function render() {
-  logger.time('DOM Render');
   const App = (await import('components/container/app')).App;
   ReactDOM.render(<App />, document.getElementById('app'));
-  logger.timeEnd('DOM Rendered');
 }
 
 declare const module: {

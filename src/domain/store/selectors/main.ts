@@ -32,3 +32,11 @@ export function getDoctors(): Array<any> {
 export function getMyDoctors(): Array<any> {
   return state().myDoctors;
 }
+
+export function getUser(): { id: string } {
+  return state().user;
+}
+
+export function getSampleUsers(): Array<{id: string, name: string, avatar: string, age: number }> {
+  return state().sampleUsers;
+}
