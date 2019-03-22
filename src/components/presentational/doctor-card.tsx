@@ -19,17 +19,17 @@ import { getDianosis, getUser } from 'domain/store/selectors/main';
 
 function expandedSection() {
   return (
-    <CardContent>
+  <CardContent className={css`&&& { color:rgba(0,0,0,0.9) !important; }}`}>
       <List component="nav">
         <ListItem>
-          <ListItemText primary="Medicine A" />
+          <ListItemText primary="Medicine A" className={css`&&& { color:rgba(0,0,0,0.9) !important; }}`} />
         </ListItem>
         <Divider />
         <ListItem divider>
-          <ListItemText primary="Medicine B" />
+          <ListItemText primary="Medicine B" className={css`&&& { color:rgba(0,0,0,0.9) !important; }}`} />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Daily for 3 weeks" />
+          <ListItemText primary="Daily for 3 weeks" className={css`&&& { color:rgba(0,0,0,0.9) !important; }}`} />
         </ListItem>
       </List>
     </CardContent>

@@ -5,14 +5,20 @@ import AssignmentLate from '@material-ui/icons/AssignmentLate';
 import AssignmentInd from '@material-ui/icons/AssignmentInd';
 import ChatIcon from '@material-ui/icons/Chat';
 
+const icons = {
+  'ChatIcon': <ChatIcon />,
+  'Assignment': <Assignment />,
+  'AssignmentLate': <AssignmentLate />,
+  'AssignmentInd': <AssignmentInd />,
+}
+
 import { css } from 'emotion';
 export function Navbar(props: any) {
   return (
     <BottomNavigation value={props.value} showLabels>
-      <BottomNavigationAction onClick={props.routes[0]} label="Chat" icon={<ChatIcon />} />
-      <BottomNavigationAction onClick={props.routes[1]} label="Profile" icon={<Assignment />} />
-      <BottomNavigationAction onClick={props.routes[2]} label="Diagnosis" icon={<AssignmentLate />} />
-      <BottomNavigationAction onClick={props.routes[3]} label="Treatment" icon={<AssignmentInd />} />
+      {props.routes.map(item => {
+        return <BottomNavigationAction key={item.label} onClick={item.route} label={item.label} icon={icons[item.icon]} />
+      })}
     </BottomNavigation>
   );
 }

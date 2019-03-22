@@ -74,3 +74,9 @@ export function updateSnackbarContent(snackbarContent): State {
     snackbarContent
   }));
 }
+export function updateCurrentPatient(user): State {
+  return store.swap(oldState => ({
+    ...oldState,
+    currentPatient: user
+  }));
+}

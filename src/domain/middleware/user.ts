@@ -7,7 +7,9 @@ import {
   updateSnackbarContent,
   updateDiagnosis,
   updateTreatment,
-  updateSnackbarVisible
+  updateSnackbarVisible,
+  updateCurrentPage,
+  updateCurrentPatient
 } from 'domain/store/reducers/main';
 import { getDoctors, getUser } from 'domain/store/selectors/main';
 import { DianosesCard } from 'components/presentational/diagnoses-card';
@@ -22,7 +24,7 @@ const logger = getLogger('Middleware/user');
 
 export function saveDoctor(doctor: object) {
   updateMyDoctor(doctor);
-  page('/4');
+  page('/actions');
 }
 
 function normalizeBotResponse(message: string) {
@@ -44,7 +46,7 @@ export function saveDianoses(issue: object) {
     doctor
   };
   updateDiagnosis(newDiagnosis);
-  page('/3');
+  page('/diagnose');
 }
 
 export function saveTreatment(diagnosis: object, doctor: object, patient: object, prescription: string) {
@@ -149,5 +151,22 @@ export function onCloseSnackbar() {
 export function onChangeCurrentUser(user) {
   console.log(user);
   updateCurrentUser(user);
-  page('/');
+  onUserLogin(user);
+
+}
+
+export function onUserLogin(user){
+  switch (user.role) {
+    case "DOCTOR":
+      page('/doctor');
+      break;
+    default:
+      page('/');
+      break;
+  }
+}
+
+export function onClickViewPatient(user){
+  updateCurrentPatient(user);
+  page(`/patient/${user.id}`);
 }

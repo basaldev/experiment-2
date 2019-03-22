@@ -10,6 +10,23 @@
 import { store } from 'domain/store/main';
 import render from 'renderer';
 import startRouters from 'domain/middleware/router';
+export function requestFullscreen(){
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem['mozRequestFullScreen']) { /* Firefox */
+    elem['mozRequestFullScreen']();
+  } else if (elem['webkitRequestFullscreen']) { /* Chrome, Safari and Opera */
+    elem['webkitRequestFullscreen']();
+  } else if (elem['msRequestFullscreen']) { /* IE/Edge */
+    elem['msRequestFullscreen']();
+  }
+}
+try {
+requestFullscreen();
+} catch {
+
+}
 
 window['AWS'].config.region = 'us-east-1'; // Region
 window['AWS'].config.credentials = new window['AWS'].CognitoIdentityCredentials({

@@ -19,19 +19,28 @@ function authMiddleware(ctx, next) {
   }
 }
 function secondRouter(onRoute: OnRoute) {
-  page('/2', authMiddleware, onRoute);
+  page('/documents', authMiddleware, onRoute);
 }
 function thirdRouter(onRoute: OnRoute) {
-  page('/3', authMiddleware, onRoute);
+  page('/diagnose', authMiddleware, onRoute);
 }
 function fourthRouter(onRoute: OnRoute) {
-  page('/4', authMiddleware, onRoute);
+  page('/actions', authMiddleware, onRoute);
 }
 function loginRouter(onRoute: OnRoute) {
   page('/login', onRoute);
 }
 function homeRouter(onRoute: OnRoute) {
   page('/', authMiddleware, onRoute);
+}
+function doctorRouter(onRoute: OnRoute) {
+  page('/doctor', authMiddleware, onRoute);
+}
+function addTreatmentRouter(onRoute: OnRoute) {
+  page('/add-treatment', authMiddleware, onRoute);
+}
+function singlePatientRouter(onRoute: OnRoute) {
+  page('/patient/:id', authMiddleware, onRoute);
 }
 
 export default function startRouters() {
@@ -56,10 +65,55 @@ export default function startRouters() {
     logger.debug('Treatmean route');
     updateCurrentPage({ name: 'FOURTH_PAGE', value: 3 });
   });
+  doctorRouter(ctx => {
+    logger.debug('Treatmean route');
+    updateCurrentPage({ name: 'DOCTOR_PAGE', value: 0 });
+  });
+  singlePatientRouter(ctx => {
+    logger.debug('SINGLE_PATIENT_PAGE route');
+    updateCurrentPage({ name: 'SINGLE_PATIENT_PAGE', value: null });
+  });
+  addTreatmentRouter(ctx => {
+    logger.debug('Treatmean route');
+    updateCurrentPage({ name: 'ADD_TREATMENT_PAGE', value: 1 });
+  });
   page();
 }
 
 export function navigate(route: string, event: any) {
   event.preventDefault();
   page(route);
+}
+
+
+export const NAVBARS = {
+  'DOCTOR': [
+    {
+      label: 'Patients',
+      icon: 'Assignment',
+      route: e => { navigate('/doctor', e);  },
+    },
+  ],
+  'PATIENT': [
+    {
+      label: 'Chat',
+      icon: 'ChatIcon',
+      route: e => { navigate('/', e);  },
+    },
+    {
+      label: 'Profile',
+      icon: 'Assignment',
+      route: e => { navigate('/documents', e); },
+    },
+    {
+      label: 'Diagnose',
+      icon: 'AssignmentLate',
+      route: e => { navigate('/diagnose', e); },
+    },
+    {
+      label: '',
+      icon: 'AssignmentInd',
+      route: e => { navigate('/actions', e); }
+    },
+  ]
 }

@@ -1,42 +1,42 @@
 {
-  "name": "360 Healthy Life Coach",
-  "short_name": "360",
+  "name": "Virtual Medical Assistant",
+  "short_name": "VMA",
   "orientation": "portrait",
   "icons": [
       {
-        "src": "/assets/icon/android-launchericon-48-48.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "48x48"
       },
 
       {
-        "src": "/assets/icon/android-launchericon-72-72.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "72x72"
       },
       {
-        "src": "/assets/icon/android-launchericon-96-96.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "96x96"
       },
       {
-        "src": "/assets/icon/android-launchericon-144-144.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "144x144"
       },
       {
-        "src": "/assets/icon/android-launchericon-192-192.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/assets/icon/android-launchericon-512-512.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
       ],
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#EFEFEF",
-  "theme_color": "#EFEFEF"
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF"
 }

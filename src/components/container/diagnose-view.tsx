@@ -8,18 +8,22 @@ function NoData(dianosis: Array<any>) {
   if (dianosis.length === 0) {
     return (
       <Grid item>
-        <Grid container>
+        <Grid container direction="column" alignContent="center" className={css`text-align:center;`}>
+        <Grid item xs={12}>
           <Typography gutterBottom variant="h5" component="h2" align="center">
             You haven’t saved a diagnosis yet.
           </Typography>
-          <Typography align="center">Go to chat, and tell me your symptoms</Typography>
+          </Grid>
+          <Grid item xs={12}>
+          <Typography align="center">Go to the chat and tell me your symptons</Typography>
+          </Grid>
         </Grid>
       </Grid>
     );
   }
 }
 
-export function DianoseView(props: any) {
+export function DiagnoseView(props: any) {
   return (
     <Grid
       container
@@ -40,9 +44,7 @@ export function DianoseView(props: any) {
                 Your Pre-diagnosis
               </Typography>
               {DianosesCard([{ Issue: tile.issue }], false)}
-              <Typography variant="body1" component="p" align="center">
-                Doctors who can help you
-              </Typography>
+              <Typography variant="body1" component="p" align="center">Recommended Doctors</Typography>
               {DoctorCard(tile.doctor, false)}
             </div>
           );

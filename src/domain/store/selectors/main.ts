@@ -9,6 +9,10 @@ export function currentPage(): Page {
   return state().currentPage;
 }
 
+export function getNavbar(): string {
+  return typeof getUser().role !== 'undefined' ? getUser().role : 'PATIENT';
+}
+
 export function getMessages(): Array<any> {
   return state().messages;
 }
@@ -47,4 +51,8 @@ export function getUser(): any {
 
 export function getSampleUsers(): Array<any> {
   return state().sampleUsers;
+}
+
+export function getCurrentPatient(): Array<any> {
+  return state().currentPatient;
 }
